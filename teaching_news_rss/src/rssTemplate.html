@@ -1,0 +1,19 @@
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel>
+ <title>学生生活に関するお知らせ|京都造形芸術大学 在学生専用サイト</title>
+ <link>https://www.kyoto-art.ac.jp/student/life/news/</link>
+ <description></description>
+ <?
+ for(var i=0;i<20;i++){
+ ?>
+ <item>
+ <title><?= get_raw_data(i)[0] ?></title>
+ <link><?= get_raw_data(i)[1] ?></link>
+ <pubDate><?= get_raw_data(i)[2] ?></pubDate>
+ <dc:creator>京都造形芸術大学</dc:creator>
+ </item>
+ <? } ?>
+</channel>
+
+</rss>
