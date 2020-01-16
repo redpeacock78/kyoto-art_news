@@ -62,7 +62,7 @@ function writing_sheet() {
 
 //行データを取得
 function get_raw_data(row_num) {
-  var range = sheet.getRange(1, 1, 20, 20);
+  let range = sheet.getRange(1, 1, 20, 20);
   return range.getValues()[row_num];
 }
 
