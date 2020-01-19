@@ -163,7 +163,7 @@ function get_event_date(): string[] {
   return conv_date;
 }
 ////sheetに書き込み
-function writing_event_teach() {
+function writing_sheet_event() {
   let url = get_event_url();
   let date = get_event_date();
   let title = get_event_title();
