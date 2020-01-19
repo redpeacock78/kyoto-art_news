@@ -1,35 +1,37 @@
 //URLとHTMLタグ、SpreadSheetを指定
-const url: string = 'https://www.kyoto-art.ac.jp/student/life/news/?paged=1';
+const url_life: string = 'https://www.kyoto-art.ac.jp/student/life/news/?paged=1';
 const html_tag = new RegExp(/<("[^"]*"|'[^']*'|[^'">])*>/g);
 const spreadsheet = SpreadsheetApp.openById('1UbxPew3ki_mlJmU6B0uzU__g02awVu1J5a0kgaSFvC0');
-const sheet = spreadsheet.getSheetByName('news');
+const sheet_life = spreadsheet.getSheetByName('life');
 
-//URLから指定範囲をスクレイピング
-function get_news(): string {
-  let responce: string[] = UrlFetchApp.fetch(url).getContentText().split(/\r\n|\r|\n/);
+
+//学生生活情報について
+////URLから指定範囲をスクレイピング
+function get_life(): string {
+  let responce: string[] = UrlFetchApp.fetch(url_life).getContentText().split(/\r\n|\r|\n/);
   let start_num: number = responce.indexOf('          <section class="news-sect">');
   let last_num: number = responce.indexOf('<span class="page-numbers dots">&hellip;</span>');
   let news_block: string = String(responce.slice(start_num, last_num)).replace(/,/g, '\n').replace(/ +/g, ' ').trim();
   return news_block;
 }
 
-//get_newsから記事のURLを取得し配列に格納
-function get_news_url(): string[] {
-  let news = get_news();
+////get_newsから記事のURLを取得し配列に格納
+function get_life_url(): string[] {
+  let news = get_life();
   let news_url: string[] = String(news.match(/<a href=".*">/g)).replace(/<a href="/g, '').replace(/">/g, '').split(',');
   return news_url;
 }
 
-//get_newsから記事のタイトルを取得し配列に格納
-function get_news_title(): string[] {
-  let news = get_news();
+////get_newsから記事のタイトルを取得し配列に格納
+function get_life_title(): string[] {
+  let news = get_life();
   let title: string[] = String(news.match(/<p class="tit">.*/g)).replace(html_tag, '').split(',');
   return title;
 }
 
-//get_newsから記事の日付をを取得し変換したのち配列に格納
-function get_news_date(): string[] {
-  let news = get_news();
+////get_newsから記事の日付をを取得し変換したのち配列に格納
+function get_life_date(): string[] {
+  let news = get_life();
   let date = String(news.match(/<p class="date font-roboto">.*/g)).replace(html_tag, '').replace(/\./g, '/').split(',');
   var conv_date: string[] = [];
   for (let i = 0;i < date.length;i++) {
@@ -41,11 +43,11 @@ function get_news_date(): string[] {
   return conv_date;
 }
 
-//sheetに書き込み
-function writing_sheet() {
-  let url = get_news_url();
-  let date = get_news_date();
-  let title = get_news_title();
+////sheetに書き込み
+function writing_sheet_life() {
+  let url = get_life_url();
+  let date = get_life_date();
+  let title = get_life_title();
   let info = [];
   for (let i = 0;i < url.length;i++) {
     let news = [title[i], url[i], date[i]];
@@ -53,23 +55,23 @@ function writing_sheet() {
   }
   let rows = info.length;
   let cols = info[0].length;
-  sheet.insertRows(1, rows);
-  sheet.getRange(1, 1, rows, cols).setValues(info);
-  let last_row = sheet.getLastRow();
-  let data = sheet.getRange(1, 1, last_row, 3);
+  sheet_life.insertRows(1, rows);
+  sheet_life.getRange(1, 1, rows, cols).setValues(info);
+  let last_row = sheet_life.getLastRow();
+  let data = sheet_life.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
 }
 
-//行データを取得
-function get_raw_data(row_num) {
-  let range = sheet.getRange(1, 1, 20, 20);
+////行データを取得
+function get_life_data(row_num) {
+  let range = sheet_life.getRange(1, 1, 20, 20);
   return range.getValues()[row_num];
 }
 
 //RSS生成
 function doGet() {
   //テンプレート呼び出し
-  let output = HtmlService.createTemplateFromFile('rssTemplate');
+  let output = HtmlService.createTemplateFromFile('rss_life');
   let result = output.evaluate();
   //コンテントタイプを指定
   return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
