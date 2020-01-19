@@ -189,10 +189,28 @@ function get_event_data(row_num) {
 
 
 //RSS生成
-function doGet() {
-  //テンプレート呼び出し
-  let output = HtmlService.createTemplateFromFile('rss_life');
-  let result = output.evaluate();
-  //コンテントタイプを指定
-  return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
+function doGet(e) {
+  let page = e.parameter["e"];
+  if (page == "life" ) {
+    //生活情報について
+    //テンプレート呼び出し
+    let output = HtmlService.createTemplateFromFile('rss_life');
+    let result = output.evaluate();
+    //コンテントタイプを指定
+    return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
+  } else if (page == "teach") {
+    //学習について
+    //テンプレート呼び出し
+    let output = HtmlService.createTemplateFromFile('rss_teach');
+    let result = output.evaluate();
+    //コンテントタイプを指定
+    return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
+  } else if (page == "event") {
+    //イベントについて
+    //テンプレート呼び出し
+    let output = HtmlService.createTemplateFromFile('rss_event');
+    let result = output.evaluate();
+    //コンテントタイプを指定
+    return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
+  }
 }
