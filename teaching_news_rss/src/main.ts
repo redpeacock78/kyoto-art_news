@@ -190,7 +190,7 @@ function get_event_data(row_num) {
 
 //RSS生成
 function doGet(e) {
-  let page = e.parameter["e"];
+  let page = e.parameter["p"];
   if (page == "life" ) {
     //生活情報について
     //テンプレート呼び出し
