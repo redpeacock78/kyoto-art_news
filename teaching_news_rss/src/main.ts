@@ -40,7 +40,7 @@ function get_life_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
   }
   return conv_date;
 }
@@ -99,7 +99,7 @@ function get_teach_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
   }
   return conv_date;
 }
@@ -158,7 +158,7 @@ function get_event_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
   }
   return conv_date;
 }
@@ -187,6 +187,29 @@ function get_event_data(row_num) {
 }
 
 
+//全ての情報
+function get_all_data(i) {
+  var life = sheet_life.getRange(1, 1, 20, 3).getValues();
+  var teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
+  var event = sheet_event.getRange(1, 1, 20, 3).getValues();
+  
+  var all = life.concat(teach, event);
+  var all_sort = all.sort(sort_asc);
+  function sort_asc(a,b) {
+    let a_date = Utilities.formatDate(new Date(a[2]), 'JST', 'yyyy/MM/dd');
+    let b_date = Utilities.formatDate(new Date(b[2]), 'JST', 'yyyy/MM/dd');
+    if(new Date(a_date) > new Date(b_date)) {
+      return -1;
+    } else if(new Date(a_date) < new Date(b_date)) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  return all_sort[i];
+}
+
+
 
 //RSS生成
 function doGet(e) {
@@ -209,6 +232,13 @@ function doGet(e) {
     //イベントについて
     //テンプレート呼び出し
     let output = HtmlService.createTemplateFromFile('rss_event');
+    let result = output.evaluate();
+    //コンテントタイプを指定
+    return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
+  } else if (page==null) {
+    //全ての情報
+    //テンプレート呼び出し
+    let output = HtmlService.createTemplateFromFile('rss_all');
     let result = output.evaluate();
     //コンテントタイプを指定
     return ContentService.createTextOutput(result.getContent()).setMimeType(ContentService.MimeType.XML);
