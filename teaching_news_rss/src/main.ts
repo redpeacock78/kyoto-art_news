@@ -7,6 +7,7 @@ const spreadsheet = SpreadsheetApp.openById('1UbxPew3ki_mlJmU6B0uzU__g02awVu1J5a
 const sheet_life = spreadsheet.getSheetByName('life');
 const sheet_teach = spreadsheet.getSheetByName('teach');
 const sheet_event = spreadsheet.getSheetByName('event');
+const sheet_all = spreadsheet.getSheetByName('all');
 
 
 
@@ -187,26 +188,38 @@ function get_event_data(row_num) {
 }
 
 
-//全ての情報
-function get_all_data(i) {
-  var life = sheet_life.getRange(1, 1, 20, 3).getValues();
-  var teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
-  var event = sheet_event.getRange(1, 1, 20, 3).getValues();
-  
-  var all = life.concat(teach, event);
-  var all_sort = all.sort(sort_asc);
+//全ての情報について
+function writing_sheet_all() {
+  ////それぞれから情報を二次元配列で取得
+  let life = sheet_life.getRange(1, 1, 20, 3).getValues();
+  let teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
+  let event = sheet_event.getRange(1, 1, 20, 3).getValues();
+  ////取得した二次元配列を全て連結し要素の日付で昇順にソートし上から20件取得
+  let all = life.concat(teach, event).sort(sort_asc).slice(0, 20);
   function sort_asc(a,b) {
-    let a_date = Utilities.formatDate(new Date(a[2]), 'JST', 'yyyy/MM/dd');
-    let b_date = Utilities.formatDate(new Date(b[2]), 'JST', 'yyyy/MM/dd');
-    if(new Date(a_date) > new Date(b_date)) {
+    let a_date = new Date(Utilities.formatDate(new Date(a[2]), 'JST', 'yyyy/MM/dd'));
+    let b_date = new Date(Utilities.formatDate(new Date(b[2]), 'JST', 'yyyy/MM/dd'));
+    if　(a_date > b_date) {
       return -1;
-    } else if(new Date(a_date) < new Date(b_date)) {
+    } else if　(a_date < b_date) {
       return 1;
     } else {
       return 0;
     }
   }
-  return all_sort[i];
+  ////ソートした二次元配列をsheetに書き込み
+  let rows = all.length;
+  let cols = all[0].length;
+  sheet_all.insertRows(1, rows);
+  sheet_all.getRange(1, 1, rows, cols).setValues(all);
+  let last_row = sheet_all.getLastRow();
+  let data = sheet_all.getRange(1, 1, last_row, 3);
+  data.removeDuplicates();
+}
+////行データを取得
+function get_all_data(row_num) {
+  let range = sheet_all.getRange(1, 1, 20, 20);
+  return range.getValues()[row_num];
 }
 
 
