@@ -20,3 +20,5 @@
 - GAS(Google Apps Script)
 - Firebase Dynamic Links
 
+## License
+MIT
