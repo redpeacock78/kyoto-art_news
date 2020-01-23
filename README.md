@@ -21,4 +21,4 @@
 - [Firebase Dynamic Links](https://firebase.google.com/docs/dynamic-links?hl=ja)
 
 ## License
-MIT
+This source code is licensed MIT.
