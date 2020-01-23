@@ -59,7 +59,8 @@ function writing_sheet_life() {
   let cols = info[0].length;
   sheet_life.insertRows(1, rows);
   sheet_life.getRange(1, 1, rows, cols).setValues(info);
-  let data = sheet_life.getRange(1, 1, 20, 2);
+  let last_row = sheet_life.getLastRow();
+  let data = sheet_life.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
 }
 ////行データを取得
@@ -117,7 +118,8 @@ function writing_sheet_teach() {
   let cols = info[0].length;
   sheet_teach.insertRows(1, rows);
   sheet_teach.getRange(1, 1, rows, cols).setValues(info);
-  let data = sheet_teach.getRange(1, 1, 20, 3);
+  let last_row = sheet_teach.getLastRow();
+  let data = sheet_teach.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
 }
 ////行データを取得
@@ -175,7 +177,8 @@ function writing_sheet_event() {
   let cols = info[0].length;
   sheet_event.insertRows(1, rows);
   sheet_event.getRange(1, 1, rows, cols).setValues(info);
-  let data = sheet_event.getRange(1, 1, 20, 2);
+  let last_row = sheet_event.getLastRow();
+  let data = sheet_event.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
 }
 ////行データを取得
@@ -209,7 +212,8 @@ function writing_sheet_all() {
   let cols = all[0].length;
   sheet_all.insertRows(1, rows);
   sheet_all.getRange(1, 1, rows, cols).setValues(all);
-  let data = sheet_all.getRange(1, 1, 20, 2);
+  let last_row = sheet_all.getLastRow();
+  let data = sheet_all.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
 }
 ////行データを取得
