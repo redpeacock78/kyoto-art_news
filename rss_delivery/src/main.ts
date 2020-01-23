@@ -119,12 +119,12 @@ function writing_sheet_teach() {
   sheet_teach.insertRows(1, rows);
   sheet_teach.getRange(1, 1, rows, cols).setValues(info);
   let last_row = sheet_teach.getLastRow();
-  let data = sheet_teach.getRange(1, 1, last_row, 3);
+  let data = sheet_teach.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
 }
 ////行データを取得
 function get_teach_data(row_num) {
-  let range = sheet_teach.getRange(1, 1, 20, 2);
+  let range = sheet_teach.getRange(1, 1, 20, 3);
   return range.getValues()[row_num];
 }
 
