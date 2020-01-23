@@ -41,7 +41,7 @@ function get_life_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy HH:mm:ss Z"));
   }
   return conv_date;
 }
@@ -59,13 +59,12 @@ function writing_sheet_life() {
   let cols = info[0].length;
   sheet_life.insertRows(1, rows);
   sheet_life.getRange(1, 1, rows, cols).setValues(info);
-  let last_row = sheet_life.getLastRow();
-  let data = sheet_life.getRange(1, 1, last_row, 3);
+  let data = sheet_life.getRange(1, 1, 20, 2);
   data.removeDuplicates();
 }
 ////行データを取得
 function get_life_data(row_num) {
-  let range = sheet_life.getRange(1, 1, 20, 20);
+  let range = sheet_life.getRange(1, 1, 20, 3);
   return range.getValues()[row_num];
 }
 
@@ -100,7 +99,7 @@ function get_teach_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy HH:mm:ss Z"));
   }
   return conv_date;
 }
@@ -118,13 +117,12 @@ function writing_sheet_teach() {
   let cols = info[0].length;
   sheet_teach.insertRows(1, rows);
   sheet_teach.getRange(1, 1, rows, cols).setValues(info);
-  let last_row = sheet_teach.getLastRow();
-  let data = sheet_teach.getRange(1, 1, last_row, 3);
+  let data = sheet_teach.getRange(1, 1, 20, 3);
   data.removeDuplicates();
 }
 ////行データを取得
 function get_teach_data(row_num) {
-  let range = sheet_teach.getRange(1, 1, 20, 20);
+  let range = sheet_teach.getRange(1, 1, 20, 2);
   return range.getValues()[row_num];
 }
 
@@ -159,7 +157,7 @@ function get_event_date(): string[] {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy 00:00:00 Z"));
+    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy HH:mm:ss Z"));
   }
   return conv_date;
 }
@@ -177,13 +175,12 @@ function writing_sheet_event() {
   let cols = info[0].length;
   sheet_event.insertRows(1, rows);
   sheet_event.getRange(1, 1, rows, cols).setValues(info);
-  let last_row = sheet_event.getLastRow();
-  let data = sheet_event.getRange(1, 1, last_row, 3);
+  let data = sheet_event.getRange(1, 1, 20, 2);
   data.removeDuplicates();
 }
 ////行データを取得
 function get_event_data(row_num) {
-  let range = sheet_event.getRange(1, 1, 20, 20);
+  let range = sheet_event.getRange(1, 1, 20, 3);
   return range.getValues()[row_num];
 }
 
@@ -212,13 +209,12 @@ function writing_sheet_all() {
   let cols = all[0].length;
   sheet_all.insertRows(1, rows);
   sheet_all.getRange(1, 1, rows, cols).setValues(all);
-  let last_row = sheet_all.getLastRow();
-  let data = sheet_all.getRange(1, 1, last_row, 3);
+  let data = sheet_all.getRange(1, 1, 20, 2);
   data.removeDuplicates();
 }
 ////行データを取得
 function get_all_data(row_num) {
-  let range = sheet_all.getRange(1, 1, 20, 20);
+  let range = sheet_all.getRange(1, 1, 20, 3);
   return range.getValues()[row_num];
 }
 
