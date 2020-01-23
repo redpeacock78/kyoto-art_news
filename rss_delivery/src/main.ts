@@ -62,6 +62,9 @@ function writing_sheet_life() {
   let last_row = sheet_life.getLastRow();
   let data = sheet_life.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
+  let start_row = sheet_life.getRange(1, 1).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  let end_row = sheet_life.getRange(1, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  sheet_life.getRange(start_row + 1, 3, end_row).clearContent();
 }
 ////行データを取得
 function get_life_data(row_num) {
@@ -121,6 +124,9 @@ function writing_sheet_teach() {
   let last_row = sheet_teach.getLastRow();
   let data = sheet_teach.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
+  let start_row = sheet_teach.getRange(1, 1).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  let end_row = sheet_teach.getRange(1, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  sheet_teach.getRange(start_row + 1, 3, end_row).clearContent();
 }
 ////行データを取得
 function get_teach_data(row_num) {
@@ -180,6 +186,9 @@ function writing_sheet_event() {
   let last_row = sheet_event.getLastRow();
   let data = sheet_event.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
+  let start_row = sheet_event.getRange(1, 1).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  let end_row = sheet_event.getRange(1, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  sheet_event.getRange(start_row + 1, 3, end_row).clearContent();
 }
 ////行データを取得
 function get_event_data(row_num) {
@@ -215,6 +224,9 @@ function writing_sheet_all() {
   let last_row = sheet_all.getLastRow();
   let data = sheet_all.getRange(1, 1, last_row, 2);
   data.removeDuplicates();
+  let start_row = sheet_all.getRange(1, 1).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  let end_row = sheet_all.getRange(1, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  sheet_all.getRange(start_row + 1, 3, end_row).clearContent();
 }
 ////行データを取得
 function get_all_data(row_num) {
