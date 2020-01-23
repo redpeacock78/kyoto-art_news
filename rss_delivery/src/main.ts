@@ -1,3 +1,10 @@
+/*
+Copyright (c) 2020 redpeacock78
+This software is released under the MIT License, see LICENSE.
+*/
+
+
+
 //URLとHTMLタグ、SpreadSheetを指定
 const url_life: string = 'https://www.kyoto-art.ac.jp/student/life/news/?paged=1';
 const url_teach: string = 'https://www.kyoto-art.ac.jp/student/teaching/news/?paged=1';
