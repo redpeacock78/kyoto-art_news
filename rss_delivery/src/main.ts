@@ -73,12 +73,16 @@ function writing_sheet_life() {
   }
   let data = sheet_life.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
+  let update_last_row = sheet_life.getLastRow();
+  let range = sheet_life.getRange(1, 1, update_last_row, 3);
+  let reverse_arr = range.getValues().reverse();
+  range.clear();
+  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_life_data(row_num) {
-  var last_row = sheet_life.getLastRow();
-  let range = sheet_life.getRange(last_row - 19, 1, last_row, 3);
-  return range.getValues().reverse()[row_num];
+  let range = sheet_life.getRange(1, 1, 20, 3);
+  return range.getValues()[row_num];
 }
 
 
@@ -137,12 +141,16 @@ function writing_sheet_teach() {
   }
   let data = sheet_teach.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
+  let update_last_row = sheet_teach.getLastRow();
+  let range = sheet_teach.getRange(1, 1, update_last_row, 3);
+  let reverse_arr = range.getValues().reverse();
+  range.clear();
+  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_teach_data(row_num) {
-  var last_row = sheet_teach.getLastRow();
-  let range = sheet_teach.getRange(last_row - 19, 1, last_row, 3);
-  return range.getValues().reverse()[row_num];
+  let range = sheet_teach.getRange(1, 1, 20, 3);
+  return range.getValues()[row_num];
 }
 
 
@@ -201,12 +209,16 @@ function writing_sheet_event() {
   }
   let data = sheet_event.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
+  let update_last_row = sheet_event.getLastRow();
+  let range = sheet_event.getRange(1, 1, update_last_row, 3);
+  let reverse_arr = range.getValues().reverse();
+  range.clear();
+  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_event_data(row_num) {
-  var last_row = sheet_event.getLastRow();
-  let range = sheet_event.getRange(last_row - 19, 1, last_row, 3);
-  return range.getValues().reverse()[row_num];
+  let range = sheet_event.getRange(1, 1, 20, 3);
+  return range.getValues()[row_num];
 }
 
 
@@ -240,12 +252,16 @@ function writing_sheet_all() {
   }
   let data = sheet_all.getRange(1, 1, last_row, 3);
   data.removeDuplicates();
+  let update_last_row = sheet_all.getLastRow();
+  let range = sheet_all.getRange(1, 1, update_last_row, 3);
+  let reverse_arr = range.getValues().reverse();
+  range.clear();
+  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_all_data(row_num) {
-  var last_row = sheet_all.getLastRow();
-  let range = sheet_all.getRange(last_row - 19, 1, last_row, 3);
-  return range.getValues().reverse()[row_num];
+  let range = sheet_all.getRange(1, 1, 20, 3);
+  return range.getValues()[row_num];
 }
 
 
