@@ -66,18 +66,20 @@ function writing_sheet_life() {
   let rows = info.length;
   let cols = info[0].length;
   let last_row = sheet_life.getLastRow();
-  if (last_row = 1) {
-    sheet_life.getRange(1, 1, rows, cols).setValues(info.reverse());
+  if (last_row === 0) {
+    sheet_life.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    sheet_life.getRange(1, 1, last_row, 3).setValues(info.reverse());
+    let update_last_row = sheet_life.getLastRow();
+    let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues().concat(info);
+    let values = [];
+    let filter = range.filter(e => {
+      if (values.indexOf(e[0]) === -1) {
+        values.push(e[0]);
+        return e;
+      }
+    });
+    sheet_life.getRange(1, 1, rows, cols).setValues(filter);
   }
-  let data = sheet_life.getRange(1, 1, last_row, 3);
-  data.removeDuplicates();
-  let update_last_row = sheet_life.getLastRow();
-  let range = sheet_life.getRange(1, 1, update_last_row, 3);
-  let reverse_arr = range.getValues().reverse();
-  range.clear();
-  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_life_data(row_num) {
@@ -134,18 +136,20 @@ function writing_sheet_teach() {
   let rows = info.length;
   let cols = info[0].length;
   let last_row = sheet_teach.getLastRow();
-  if (last_row = 1) {
-    sheet_teach.getRange(1, 1, rows, cols).setValues(info.reverse());
+  if (last_row === 0) {
+    sheet_teach.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    sheet_teach.getRange(1, 1, last_row, 3).setValues(info.reverse());
+    let update_last_row = sheet_teach.getLastRow();
+    let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues().concat(info);
+    let values = [];
+    let filter = range.filter(e => {
+      if (values.indexOf(e[0]) === -1) {
+        values.push(e[0]);
+        return e;
+      }
+    });
+    sheet_teach.getRange(1, 1, rows, cols).setValues(filter);
   }
-  let data = sheet_teach.getRange(1, 1, last_row, 3);
-  data.removeDuplicates();
-  let update_last_row = sheet_teach.getLastRow();
-  let range = sheet_teach.getRange(1, 1, update_last_row, 3);
-  let reverse_arr = range.getValues().reverse();
-  range.clear();
-  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_teach_data(row_num) {
@@ -202,18 +206,20 @@ function writing_sheet_event() {
   let rows = info.length;
   let cols = info[0].length;
   let last_row = sheet_event.getLastRow();
-  if (last_row = 1) {
-    sheet_event.getRange(1, 1, rows, cols).setValues(info.reverse());
+  if (last_row === 0) {
+    sheet_event.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    sheet_event.getRange(1, 1, last_row, 3).setValues(info.reverse());
+    let update_last_row = sheet_event.getLastRow();
+    let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues().concat(info);
+    let values = [];
+    let filter = range.filter(e => {
+      if (values.indexOf(e[0]) === -1) {
+        values.push(e[0]);
+        return e;
+      }
+    });
+    sheet_event.getRange(1, 1, rows, cols).setValues(filter);
   }
-  let data = sheet_event.getRange(1, 1, last_row, 3);
-  data.removeDuplicates();
-  let update_last_row = sheet_event.getLastRow();
-  let range = sheet_event.getRange(1, 1, update_last_row, 3);
-  let reverse_arr = range.getValues().reverse();
-  range.clear();
-  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_event_data(row_num) {
@@ -241,22 +247,35 @@ function writing_sheet_all() {
       return 0;
     }
   }
-  ////ソートした二次元配列をsheetに書き込み
+  ////ソートした二次元配列をsheetの内容と比較して書き込み
   let rows = all.length;
   let cols = all[0].length;
   let last_row = sheet_all.getLastRow();
-  if (last_row = 1) {
-    sheet_all.getRange(1, 1, rows, cols).setValues(all.reverse());
+  if (last_row === 0) {
+    sheet_all.getRange(1, 1, rows, cols).setValues(all);
   } else {
-    sheet_all.getRange(1, 1, last_row, 3).setValues(all.reverse());
+    let update_last_row = sheet_all.getLastRow();
+    let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues().concat(all);
+    let values = [];
+    let filter = range.filter(e => {
+      if (values.indexOf(e[0]) === -1) {
+        values.push(e[0]);
+        return e;
+      }
+    }).sort(sort_asc);
+    function sort_asc(a,b) {
+      let a_date = new Date(Utilities.formatDate(new Date(a[2]), 'JST', 'yyyy/MM/dd'));
+      let b_date = new Date(Utilities.formatDate(new Date(b[2]), 'JST', 'yyyy/MM/dd'));
+      if　(a_date > b_date) {
+        return -1;
+      } else if　(a_date < b_date) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+    sheet_all.getRange(1, 1, rows, cols).setValues(filter);
   }
-  let data = sheet_all.getRange(1, 1, last_row, 3);
-  data.removeDuplicates();
-  let update_last_row = sheet_all.getLastRow();
-  let range = sheet_all.getRange(1, 1, update_last_row, 3);
-  let reverse_arr = range.getValues().reverse();
-  range.clear();
-  range.setValues(reverse_arr);
 }
 ////行データを取得
 function get_all_data(row_num) {
