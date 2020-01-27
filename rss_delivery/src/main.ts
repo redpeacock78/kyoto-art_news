@@ -73,7 +73,7 @@ function writing_sheet_life() {
     let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < 20; i++) {
+    for (var i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
     for (var i = 0;i < range.length; i++) {
@@ -149,7 +149,7 @@ function writing_sheet_teach() {
     let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < 20; i++) {
+    for (var i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
     for (var i = 0;i < range.length; i++) {
@@ -225,7 +225,7 @@ function writing_sheet_event() {
     let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < 20; i++) {
+    for (var i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
     for (var i = 0;i < range.length; i++) {
@@ -276,7 +276,7 @@ function writing_sheet_all() {
     let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < 20; i++) {
+    for (var i = 0;i < all.length; i++) {
       a.push(all[i][0]);
     }
     for (var i = 0;i < range.length; i++) {
