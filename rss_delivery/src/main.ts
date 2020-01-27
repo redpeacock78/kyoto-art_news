@@ -73,14 +73,14 @@ function writing_sheet_life() {
     let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
-    for (var i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length; i++) {
       b.push(range[i][0]);
     }
     let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (var i = 0;i < c.length; i++) {
+    for (let i = 0;i < c.length; i++) {
       var num = a.indexOf(c[i]);
       range.unshift(info[num]);
     }
@@ -149,14 +149,14 @@ function writing_sheet_teach() {
     let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
-    for (var i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length; i++) {
       b.push(range[i][0]);
     }
     let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (var i = 0;i < c.length; i++) {
+    for (let i = 0;i < c.length; i++) {
       var num = a.indexOf(c[i]);
       range.unshift(info[num]);
     }
@@ -225,14 +225,14 @@ function writing_sheet_event() {
     let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length; i++) {
       a.push(info[i][0]);
     }
-    for (var i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length; i++) {
       b.push(range[i][0]);
     }
     let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (var i = 0;i < c.length; i++) {
+    for (let i = 0;i < c.length; i++) {
       var num = a.indexOf(c[i]);
       range.unshift(info[num]);
     }
@@ -276,14 +276,14 @@ function writing_sheet_all() {
     let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues();
     let a = [];
     let b = [];
-    for (var i = 0;i < all.length; i++) {
+    for (let i = 0;i < all.length; i++) {
       a.push(all[i][0]);
     }
-    for (var i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length; i++) {
       b.push(range[i][0]);
     }
     let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (var i = 0;i < c.length; i++) {
+    for (let i = 0;i < c.length; i++) {
       var num = a.indexOf(c[i]);
       range.unshift(all[num]);
     }
