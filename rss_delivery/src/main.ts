@@ -70,15 +70,9 @@ function writing_sheet_life() {
     sheet_life.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let update_last_row = sheet_life.getLastRow();
-    let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues().concat(info);
-    let values = [];
-    let filter = range.filter(e => {
-      if (values.indexOf(e[0]) === -1) {
-        values.push(e[0]);
-        return e;
-      }
-    });
-    sheet_life.getRange(1, 1, rows, cols).setValues(filter);
+    let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues();
+    let result = info.concat(range).filter((x, i, e) => e.indexOf(x[0]) === i).concat(range);
+    sheet_life.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -140,15 +134,9 @@ function writing_sheet_teach() {
     sheet_teach.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let update_last_row = sheet_teach.getLastRow();
-    let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues().concat(info);
-    let values = [];
-    let filter = range.filter(e => {
-      if (values.indexOf(e[0]) === -1) {
-        values.push(e[0]);
-        return e;
-      }
-    });
-    sheet_teach.getRange(1, 1, rows, cols).setValues(filter);
+    let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues();
+    let result = info.concat(range).filter((x, i, e) => e.indexOf(x[0]) === i).concat(range);
+    sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -210,15 +198,9 @@ function writing_sheet_event() {
     sheet_event.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let update_last_row = sheet_event.getLastRow();
-    let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues().concat(info);
-    let values = [];
-    let filter = range.filter(e => {
-      if (values.indexOf(e[0]) === -1) {
-        values.push(e[0]);
-        return e;
-      }
-    });
-    sheet_event.getRange(1, 1, rows, cols).setValues(filter);
+    let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues();
+    let result = info.concat(range).filter((x, i, e) => e.indexOf(x[0]) === i).concat(range);
+    sheet_event.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -255,26 +237,9 @@ function writing_sheet_all() {
     sheet_all.getRange(1, 1, rows, cols).setValues(all);
   } else {
     let update_last_row = sheet_all.getLastRow();
-    let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues().concat(all);
-    let values = [];
-    let filter = range.filter(e => {
-      if (values.indexOf(e[0]) === -1) {
-        values.push(e[0]);
-        return e;
-      }
-    }).sort(sort_asc);
-    function sort_asc(a,b) {
-      let a_date = new Date(Utilities.formatDate(new Date(a[2]), 'JST', 'yyyy/MM/dd'));
-      let b_date = new Date(Utilities.formatDate(new Date(b[2]), 'JST', 'yyyy/MM/dd'));
-      if　(a_date > b_date) {
-        return -1;
-      } else if　(a_date < b_date) {
-        return 1;
-      } else {
-        return 0;
-      }
-    }
-    sheet_all.getRange(1, 1, rows, cols).setValues(filter);
+    let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues();
+    let result = all.concat(range).filter((x, i, e) => e.indexOf(x[0]) === i).concat(range);
+    sheet_all.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
