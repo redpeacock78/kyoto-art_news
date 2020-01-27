@@ -71,8 +71,20 @@ function writing_sheet_life() {
   } else {
     let update_last_row = sheet_life.getLastRow();
     let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues();
-    let result = info[0].filter(i => range[0].indexOf(i) == -1).concat(range);
-    sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+    let a = [];
+    let b = [];
+    for (var i = 0;i < 20; i++) {
+      a.push(info[i][0]);
+    }
+    for (var i = 0;i < range.length; i++) {
+      b.push(range[i][0]);
+    }
+    let c = a.filter(i => b.indexOf(i) == -1).reverse();
+    for (var i = 0;i < c.length; i++) {
+      var num = a.indexOf(c[i]);
+      range.unshift(info[num]);
+    }
+    sheet_life.getRange(1, 1, range.length, cols).setValues(range);
   }
 }
 ////行データを取得
@@ -135,8 +147,20 @@ function writing_sheet_teach() {
   } else {
     let update_last_row = sheet_teach.getLastRow();
     let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues();
-    let result = info[0].filter(i => range[0].indexOf(i) == -1).concat(range);
-    sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
+    let a = [];
+    let b = [];
+    for (var i = 0;i < 20; i++) {
+      a.push(info[i][0]);
+    }
+    for (var i = 0;i < range.length; i++) {
+      b.push(range[i][0]);
+    }
+    let c = a.filter(i => b.indexOf(i) == -1).reverse();
+    for (var i = 0;i < c.length; i++) {
+      var num = a.indexOf(c[i]);
+      range.unshift(info[num]);
+    }
+    sheet_teach.getRange(1, 1, range.length, cols).setValues(range);
   }
 }
 ////行データを取得
@@ -199,8 +223,20 @@ function writing_sheet_event() {
   } else {
     let update_last_row = sheet_event.getLastRow();
     let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues();
-    let result = info[0].filter(i => range[0].indexOf(i) == -1).concat(range);
-    sheet_event.getRange(1, 1, result.length, cols).setValues(result);
+    let a = [];
+    let b = [];
+    for (var i = 0;i < 20; i++) {
+      a.push(info[i][0]);
+    }
+    for (var i = 0;i < range.length; i++) {
+      b.push(range[i][0]);
+    }
+    let c = a.filter(i => b.indexOf(i) == -1).reverse();
+    for (var i = 0;i < c.length; i++) {
+      var num = a.indexOf(c[i]);
+      range.unshift(info[num]);
+    }
+    sheet_event.getRange(1, 1, range.length, cols).setValues(range);
   }
 }
 ////行データを取得
@@ -238,8 +274,20 @@ function writing_sheet_all() {
   } else {
     let update_last_row = sheet_all.getLastRow();
     let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues();
-    let result = all[0].filter(i => range[0].indexOf(i) == -1).concat(range);
-    sheet_all.getRange(1, 1, result.length, cols).setValues(result);
+    let a = [];
+    let b = [];
+    for (var i = 0;i < 20; i++) {
+      a.push(all[i][0]);
+    }
+    for (var i = 0;i < range.length; i++) {
+      b.push(range[i][0]);
+    }
+    let c = a.filter(i => b.indexOf(i) == -1).reverse();
+    for (var i = 0;i < c.length; i++) {
+      var num = a.indexOf(c[i]);
+      range.unshift(all[num]);
+    }
+    sheet_all.getRange(1, 1, range.length, cols).setValues(range);
   }
 }
 ////行データを取得
