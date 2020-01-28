@@ -92,6 +92,7 @@ function writing_sheet_life() {
     }
     let result = diff.concat(data);
     sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+    cache.remove('life_data');
     cache.put('life_data', JSON.stringify(result) ,21600);
   }
 }
@@ -176,6 +177,7 @@ function writing_sheet_teach() {
     }
     let result = diff.concat(data);
     sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
+    cache.remove('tea_data');
     cache.put('tea_data', JSON.stringify(result) ,21600);
   }
 }
@@ -260,6 +262,7 @@ function writing_sheet_event() {
     }
     let result = diff.concat(data);
     sheet_event.getRange(1, 1, result.length, cols).setValues(result);
+    cache.remove('eve_data');
     cache.put('eve_data', JSON.stringify(result) ,21600);
   }
 }
@@ -320,6 +323,7 @@ function writing_sheet_all() {
     }
     let result = diff.concat(data);
     sheet_all.getRange(1, 1, result.length, cols).setValues(result);
+    cache.remove('all_data');
     cache.put('all_data', JSON.stringify(result) ,21600);
   }
 }
