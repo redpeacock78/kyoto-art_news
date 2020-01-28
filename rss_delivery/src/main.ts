@@ -72,14 +72,14 @@ function writing_sheet_life() {
     let range = sheet_life.getRange(1, 1, last_row, 3).getValues();
     let info_tit = [];
     let range_tit = [];
-    for (let i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length;i++) {
       info_tit.push(info[i][0]);
     }
-    for (let i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length;i++) {
       range_tit.push(range[i][0]);
     }
     let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length; i++) {
+    for (let i = 0;i < diff.length;i++) {
       var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
@@ -147,14 +147,14 @@ function writing_sheet_teach() {
     let range = sheet_teach.getRange(1, 1, last_row, 3).getValues();
     let info_tit = [];
     let range_tit = [];
-    for (let i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length;i++) {
       info_tit.push(info[i][0]);
     }
-    for (let i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length;i++) {
       range_tit.push(range[i][0]);
     }
     let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length; i++) {
+    for (let i = 0;i < diff.length;i++) {
       var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
@@ -222,14 +222,14 @@ function writing_sheet_event() {
     let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
     let info_tit = [];
     let range_tit = [];
-    for (let i = 0;i < info.length; i++) {
+    for (let i = 0;i < info.length;i++) {
       info_tit.push(info[i][0]);
     }
-    for (let i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length;i++) {
       range_tit.push(range[i][0]);
     }
     let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length; i++) {
+    for (let i = 0;i < diff.length;i++) {
       var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
@@ -272,14 +272,14 @@ function writing_sheet_all() {
     let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
     let all_tit = [];
     let range_tit = [];
-    for (let i = 0;i < all.length; i++) {
+    for (let i = 0;i < all.length;i++) {
       all_tit.push(all[i][0]);
     }
-    for (let i = 0;i < range.length; i++) {
+    for (let i = 0;i < range.length;i++) {
       range_tit.push(range[i][0]);
     }
     let diff = all_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length; i++) {
+    for (let i = 0;i < diff.length;i++) {
       var num = all_tit.indexOf(diff[i]);
       range.unshift(all[num]);
     }
