@@ -72,7 +72,7 @@ function writing_sheet_life() {
     let cache = CacheService.getScriptCache();
     let life_data = cache.get('life_data');
     if (life_data == null) {
-      let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
+      let range = sheet_life.getRange(1, 1, last_row, 3).getValues();
       cache.put('life_data', JSON.stringify(range) ,21600);
     }
     let data = JSON.parse(cache.get('life_data'));
