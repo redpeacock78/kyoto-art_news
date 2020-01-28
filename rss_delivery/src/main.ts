@@ -43,13 +43,13 @@ function get_life_title(): string[] {
 function get_life_date(): string[] {
   let news = get_life();
   let date = String(news.match(/<p class="date font-roboto">.*/g)).replace(html_tag, '').replace(/\./g, '/').split(',');
-  var conv_date: string[] = [];
-  for (let i = 0;i < date.length;i++) {
+  var conv_date: string[] = new Array();
+  for (let i = 0;i < date.length;i=(i+1)|0) {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
     let time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss")
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z"));
+    conv_date[i] = Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z");
   }
   return conv_date;
 }
@@ -58,10 +58,9 @@ function writing_sheet_life() {
   let url = get_life_url();
   let date = get_life_date();
   let title = get_life_title();
-  let info = [];
-  for (let i = 0;i < url.length;i++) {
-    let news = [title[i], url[i], date[i]];
-    info.push(news);
+  let info = new Array();
+  for (let i = 0;i < url.length;i=(i+1)|0) {
+    info[i] = [title[i], url[i], date[i]];
   }
   let rows = info.length;
   let cols = info[0].length;
@@ -70,20 +69,22 @@ function writing_sheet_life() {
     sheet_life.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let range = sheet_life.getRange(1, 1, last_row, 3).getValues();
-    let info_tit = [];
-    let range_tit = [];
-    for (let i = 0;i < info.length;i++) {
-      info_tit.push(info[i][0]);
+    let info_tit = new Array();
+    let range_tit = new Array();
+    for (let i = 0;i < info.length;i=(i+1)|0) {
+      info_tit[i] = info[i][0];
     }
-    for (let i = 0;i < range.length;i++) {
-      range_tit.push(range[i][0]);
+    for (let i = 0;i < range.length;i=(i+1)|0) {
+      range_tit[i] = range[i][0];
     }
-    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length;i++) {
-      var num = info_tit.indexOf(diff[i]);
-      range.unshift(info[num]);
+    let tit_diff = info_tit.filter(i => range_tit.indexOf(i) == -1);
+    let diff = new Array();
+    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+      var num = info_tit.indexOf(tit_diff[i]);
+      diff[i] = info[num];
     }
-    sheet_life.getRange(1, 1, range.length, cols).setValues(range);
+    let result = diff.concat(range);
+    sheet_life.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -118,13 +119,13 @@ function get_teach_title(): string[] {
 function get_teach_date(): string[] {
   let news = get_teach();
   let date = String(news.match(/<p class="date font-roboto">.*/g)).replace(html_tag, '').replace(/\./g, '/').split(',');
-  var conv_date: string[] = [];
-  for (let i = 0;i < date.length;i++) {
+  var conv_date: string[] = new Array();
+  for (let i = 0;i < date.length;i=(i+1)|0) {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
     let time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss")
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z"));
+    conv_date[i] = Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z");
   }
   return conv_date;
 }
@@ -133,10 +134,9 @@ function writing_sheet_teach() {
   let url = get_teach_url();
   let date = get_teach_date();
   let title = get_teach_title();
-  let info = [];
-  for (let i = 0;i < url.length;i++) {
-    let news = [title[i], url[i], date[i]];
-    info.push(news);
+  let info = new Array();
+  for (let i = 0;i < url.length;i=(i+1)|0) {
+    info[i] = [title[i], url[i], date[i]];
   }
   let rows = info.length;
   let cols = info[0].length;
@@ -145,20 +145,22 @@ function writing_sheet_teach() {
     sheet_teach.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let range = sheet_teach.getRange(1, 1, last_row, 3).getValues();
-    let info_tit = [];
-    let range_tit = [];
-    for (let i = 0;i < info.length;i++) {
-      info_tit.push(info[i][0]);
+    let info_tit = new Array();
+    let range_tit = new Array();
+    for (let i = 0;i < info.length;i=(i+1)|0) {
+      info_tit[i] = info[i][0];
     }
-    for (let i = 0;i < range.length;i++) {
-      range_tit.push(range[i][0]);
+    for (let i = 0;i < range.length;i=(i+1)|0) {
+      range_tit[i] = range[i][0];
     }
-    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length;i++) {
-      var num = info_tit.indexOf(diff[i]);
-      range.unshift(info[num]);
+    let tit_diff = info_tit.filter(i => range_tit.indexOf(i) == -1);
+    let diff = new Array();
+    for (let i = 0;i < diff.length;i=(i+1)|0) {
+      let num = info_tit.indexOf(tit_diff[i]);
+      diff[i] = info[num];
     }
-    sheet_teach.getRange(1, 1, range.length, cols).setValues(range);
+    let result = diff.concat(range);
+    sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -193,13 +195,13 @@ function get_event_title(): string[] {
 function get_event_date(): string[] {
   let news = get_event();
   let date = String(news.match(/<p class="date font-roboto">.*/g)).replace(html_tag, '').replace(/\./g, '/').split(',');
-  var conv_date: string[] = [];
-  for (let i = 0;i < date.length;i++) {
+  var conv_date: string[] = new Array();
+  for (let i = 0;i < date.length;i=(i+1)|0) {
     let del = '/';
     let arr: any = date[i].split(del);
     let conv = new Date(arr[0], arr[1] - 1, arr[2]);
     let time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss")
-    conv_date.push(Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z"));
+    conv_date[i] = Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z");
   }
   return conv_date;
 }
@@ -208,10 +210,9 @@ function writing_sheet_event() {
   let url = get_event_url();
   let date = get_event_date();
   let title = get_event_title();
-  let info = [];
-  for (let i = 0;i < url.length;i++) {
-    let news = [title[i], url[i], date[i]];
-    info.push(news);
+  let info = new Array();
+  for (let i = 0;i < url.length;i=(i+1)|0) {
+    info[i] = [title[i], url[i], date[i]];
   }
   let rows = info.length;
   let cols = info[0].length;
@@ -220,20 +221,22 @@ function writing_sheet_event() {
     sheet_event.getRange(1, 1, rows, cols).setValues(info);
   } else {
     let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
-    let info_tit = [];
-    let range_tit = [];
-    for (let i = 0;i < info.length;i++) {
-      info_tit.push(info[i][0]);
+    let info_tit = new Array();
+    let range_tit = new Array();
+    for (let i = 0;i < info.length;i=(i+1)|0) {
+      info_tit[i] = info[i][0];
     }
-    for (let i = 0;i < range.length;i++) {
-      range_tit.push(range[i][0]);
+    for (let i = 0;i < range.length;i=(i+1)|0) {
+      range_tit[i] = range[i][0];
     }
-    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length;i++) {
-      var num = info_tit.indexOf(diff[i]);
-      range.unshift(info[num]);
+    let tit_diff = info_tit.filter(i => range_tit.indexOf(i) == -1);
+    let diff = new Array();
+    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+      let num = info_tit.indexOf(tit_diff[i]);
+      diff[i] = info[num];
     }
-    sheet_event.getRange(1, 1, range.length, cols).setValues(range);
+    let result = diff.concat(range);
+    sheet_event.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
@@ -270,20 +273,22 @@ function writing_sheet_all() {
     sheet_all.getRange(1, 1, rows, cols).setValues(all);
   } else {
     let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
-    let all_tit = [];
-    let range_tit = [];
-    for (let i = 0;i < all.length;i++) {
-      all_tit.push(all[i][0]);
+    let all_tit = new Array();
+    let range_tit = new Array();
+    for (let i = 0;i < all.length;i=(i+1)|0) {
+      all_tit[i] = all[i][0];
     }
-    for (let i = 0;i < range.length;i++) {
-      range_tit.push(range[i][0]);
+    for (let i = 0;i < range.length;i=(i+1)|0) {
+      range_tit[i] = range[i][0];
     }
-    let diff = all_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
-    for (let i = 0;i < diff.length;i++) {
-      var num = all_tit.indexOf(diff[i]);
-      range.unshift(all[num]);
+    let tit_diff = all_tit.filter(i => range_tit.indexOf(i) == -1);
+    let diff = new Array();
+    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+      let num = all_tit.indexOf(tit_diff[i]);
+      diff[i] = all[num];
     }
-    sheet_all.getRange(1, 1, range.length, cols).setValues(range);
+    let result = diff.concat(range);
+    sheet_all.getRange(1, 1, result.length, cols).setValues(result);
   }
 }
 ////行データを取得
