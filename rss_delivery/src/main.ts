@@ -219,24 +219,32 @@ function writing_sheet_event() {
   let last_row = sheet_event.getLastRow();
   if (last_row === 0) {
     sheet_event.getRange(1, 1, rows, cols).setValues(info);
+    CacheService.getScriptCache().put('eve_data', JSON.stringify(info), 21600);
   } else {
-    let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
+    let cache = CacheService.getScriptCache();
+    let eve_data = cache.get('eve_data');
+    if (eve_data == null) {
+      let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
+      cache.put('eve_data', JSON.stringify(range) ,21600);
+    }
+    let data = JSON.parse(cache.get('eve_data'));
     let info_tit = new Array();
-    let range_tit = new Array();
+    let data_tit = new Array();
     for (let i = 0;i < info.length;i=(i+1)|0) {
       info_tit[i] = info[i][0];
     }
-    for (let i = 0;i < range.length;i=(i+1)|0) {
-      range_tit[i] = range[i][0];
+    for (let i = 0;i < data.length;i=(i+1)|0) {
+      data_tit[i] = data[i][0];
     }
-    let tit_diff = info_tit.filter(i => range_tit.indexOf(i) == -1);
+    let tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
     let diff = new Array();
     for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
       let num = info_tit.indexOf(tit_diff[i]);
       diff[i] = info[num];
     }
-    let result = diff.concat(range);
+    let result = diff.concat(data);
     sheet_event.getRange(1, 1, result.length, cols).setValues(result);
+    cache.put('eve_data', JSON.stringify(result) ,21600);
   }
 }
 ////行データを取得
@@ -271,24 +279,32 @@ function writing_sheet_all() {
   let last_row = sheet_all.getLastRow();
   if (last_row === 0) {
     sheet_all.getRange(1, 1, rows, cols).setValues(all);
+    CacheService.getScriptCache().put('all_data', JSON.stringify(all), 21600);
   } else {
-    let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
+    let cache = CacheService.getScriptCache();
+    let all_data = cache.get('all_data');
+    if (all_data == null ) {
+      let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
+      cache.put('all_data', JSON.stringify(range), 21600);
+    }
+    let data = JSON.parse(cache.get('all_data'));
     let all_tit = new Array();
-    let range_tit = new Array();
+    let data_tit = new Array();
     for (let i = 0;i < all.length;i=(i+1)|0) {
       all_tit[i] = all[i][0];
     }
-    for (let i = 0;i < range.length;i=(i+1)|0) {
-      range_tit[i] = range[i][0];
+    for (let i = 0;i < data.length;i=(i+1)|0) {
+      data_tit[i] = data[i][0];
     }
-    let tit_diff = all_tit.filter(i => range_tit.indexOf(i) == -1);
+    let tit_diff = all_tit.filter(i => data_tit.indexOf(i) == -1);
     let diff = new Array();
     for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
       let num = all_tit.indexOf(tit_diff[i]);
       diff[i] = all[num];
     }
-    let result = diff.concat(range);
+    let result = diff.concat(data);
     sheet_all.getRange(1, 1, result.length, cols).setValues(result);
+    cache.put('all_data', JSON.stringify(result) ,21600);
   }
 }
 ////行データを取得
