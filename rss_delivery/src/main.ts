@@ -69,19 +69,18 @@ function writing_sheet_life() {
   if (last_row === 0) {
     sheet_life.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    let update_last_row = sheet_life.getLastRow();
-    let range = sheet_life.getRange(1, 1, update_last_row, 3).getValues();
-    let a = [];
-    let b = [];
+    let range = sheet_life.getRange(1, 1, last_row, 3).getValues();
+    let info_tit = [];
+    let range_tit = [];
     for (let i = 0;i < info.length; i++) {
-      a.push(info[i][0]);
+      info_tit.push(info[i][0]);
     }
     for (let i = 0;i < range.length; i++) {
-      b.push(range[i][0]);
+      range_tit.push(range[i][0]);
     }
-    let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (let i = 0;i < c.length; i++) {
-      var num = a.indexOf(c[i]);
+    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
+    for (let i = 0;i < diff.length; i++) {
+      var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
     sheet_life.getRange(1, 1, range.length, cols).setValues(range);
@@ -145,19 +144,18 @@ function writing_sheet_teach() {
   if (last_row === 0) {
     sheet_teach.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    let update_last_row = sheet_teach.getLastRow();
-    let range = sheet_teach.getRange(1, 1, update_last_row, 3).getValues();
-    let a = [];
-    let b = [];
+    let range = sheet_teach.getRange(1, 1, last_row, 3).getValues();
+    let info_tit = [];
+    let range_tit = [];
     for (let i = 0;i < info.length; i++) {
-      a.push(info[i][0]);
+      info_tit.push(info[i][0]);
     }
     for (let i = 0;i < range.length; i++) {
-      b.push(range[i][0]);
+      range_tit.push(range[i][0]);
     }
-    let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (let i = 0;i < c.length; i++) {
-      var num = a.indexOf(c[i]);
+    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
+    for (let i = 0;i < diff.length; i++) {
+      var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
     sheet_teach.getRange(1, 1, range.length, cols).setValues(range);
@@ -221,19 +219,18 @@ function writing_sheet_event() {
   if (last_row === 0) {
     sheet_event.getRange(1, 1, rows, cols).setValues(info);
   } else {
-    let update_last_row = sheet_event.getLastRow();
-    let range = sheet_event.getRange(1, 1, update_last_row, 3).getValues();
-    let a = [];
-    let b = [];
+    let range = sheet_event.getRange(1, 1, last_row, 3).getValues();
+    let info_tit = [];
+    let range_tit = [];
     for (let i = 0;i < info.length; i++) {
-      a.push(info[i][0]);
+      info_tit.push(info[i][0]);
     }
     for (let i = 0;i < range.length; i++) {
-      b.push(range[i][0]);
+      range_tit.push(range[i][0]);
     }
-    let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (let i = 0;i < c.length; i++) {
-      var num = a.indexOf(c[i]);
+    let diff = info_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
+    for (let i = 0;i < diff.length; i++) {
+      var num = info_tit.indexOf(diff[i]);
       range.unshift(info[num]);
     }
     sheet_event.getRange(1, 1, range.length, cols).setValues(range);
@@ -272,19 +269,18 @@ function writing_sheet_all() {
   if (last_row === 0) {
     sheet_all.getRange(1, 1, rows, cols).setValues(all);
   } else {
-    let update_last_row = sheet_all.getLastRow();
-    let range = sheet_all.getRange(1, 1, update_last_row, 3).getValues();
-    let a = [];
-    let b = [];
+    let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
+    let all_tit = [];
+    let range_tit = [];
     for (let i = 0;i < all.length; i++) {
-      a.push(all[i][0]);
+      all_tit.push(all[i][0]);
     }
     for (let i = 0;i < range.length; i++) {
-      b.push(range[i][0]);
+      range_tit.push(range[i][0]);
     }
-    let c = a.filter(i => b.indexOf(i) == -1).reverse();
-    for (let i = 0;i < c.length; i++) {
-      var num = a.indexOf(c[i]);
+    let diff = all_tit.filter(i => range_tit.indexOf(i) == -1).reverse();
+    for (let i = 0;i < diff.length; i++) {
+      var num = all_tit.indexOf(diff[i]);
       range.unshift(all[num]);
     }
     sheet_all.getRange(1, 1, range.length, cols).setValues(range);
