@@ -349,7 +349,7 @@ function writing_sheet_all() {
     CacheService.getScriptCache().put('all_data', JSON.stringify(all), 21600);
   } else {
     let all_data = cache.get('all_data');
-    if (all_data == null ) {
+    if (all_data == null) {
       let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
       cache.put('all_data', JSON.stringify(range), 21600);
     }
