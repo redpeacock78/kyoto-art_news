@@ -92,9 +92,16 @@ function writing_sheet_life() {
     }
     if (diff.length > 0) {
       let result = diff.concat(data);
-      sheet_life.getRange(1, 1, result.length, cols).setValues(result);
-      cache.remove('life_data');
-      cache.put('life_data', JSON.stringify(result) ,21600);
+      if (result.length < 200) {
+        sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+        cache.remove('life_data');
+        cache.put('life_data', JSON.stringify(result) ,21600);
+      } else {
+        let max_result = result.slice(0, 200);
+        sheet_life.getRange(1, 1, max_result.length, cols).setValues(max_result);
+        cache.remove('life_data');
+        cache.put('life_data', JSON.stringify(max_result) ,21600);
+      }
     } else {
       cache.remove('life_data');
       cache.put('life_data', JSON.stringify(data) ,21600);
@@ -182,9 +189,16 @@ function writing_sheet_teach() {
     }
     if (diff.length > 0) {
       let result = diff.concat(data);
-      sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
-      cache.remove('tea_data');
-      cache.put('tea_data', JSON.stringify(result) ,21600);
+      if (result.length < 200) {
+        sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
+        cache.remove('tea_data');
+        cache.put('tea_data', JSON.stringify(result) ,21600);
+      } else {
+        let max_result = result.slice(0, 200);
+        sheet_teach.getRange(1, 1, max_result.length, cols).setValues(max_result);
+        cache.remove('tea_data');
+        cache.put('tea_data', JSON.stringify(max_result) ,21600);
+      }
     } else {
       cache.remove('tea_data');
       cache.put('tea_data', JSON.stringify(data) ,21600);
@@ -272,9 +286,16 @@ function writing_sheet_event() {
     }
     if (diff.length > 0) {
       let result = diff.concat(data);
-      sheet_event.getRange(1, 1, result.length, cols).setValues(result);
-      cache.remove('eve_data');
-      cache.put('eve_data', JSON.stringify(result) ,21600);
+      if (result.length < 200) {
+        sheet_event.getRange(1, 1, result.length, cols).setValues(result);
+        cache.remove('eve_data');
+        cache.put('eve_data', JSON.stringify(result) ,21600);
+      } else {
+        let max_result = result.slice(0, 200);
+        sheet_event.getRange(1, 1, max_result.length, cols).setValues(max_result);
+        cache.remove('eve_data');
+        cache.put('eve_data', JSON.stringify(max_result) ,21600);
+      }
     } else {
       cache.remove('eve_data');
       cache.put('eve_data', JSON.stringify(data) ,21600);
@@ -338,9 +359,16 @@ function writing_sheet_all() {
     }
     if (diff.length > 0) {
       let result = diff.concat(data);
-      sheet_all.getRange(1, 1, result.length, cols).setValues(result);
-      cache.remove('all_data');
-      cache.put('all_data', JSON.stringify(result) ,21600);
+      if (result.length < 200) {
+        sheet_all.getRange(1, 1, result.length, cols).setValues(result);
+        cache.remove('all_data');
+        cache.put('all_data', JSON.stringify(result) ,21600);
+      } else {
+        let max_result = result.slice(0, 200);
+        sheet_all.getRange(1, 1, max_result.length, cols).setValues(max_result);
+        cache.remove('all_data');
+        cache.put('all_data', JSON.stringify(max_result) ,21600);
+      }
     } else {
       cache.remove('all_data');
       cache.put('all_data', JSON.stringify(data) ,21600);
