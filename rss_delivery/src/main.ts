@@ -312,9 +312,21 @@ function get_event_data(row_num) {
 //全ての情報について
 function writing_sheet_all() {
   ////それぞれから情報を二次元配列で取得
-  let life = sheet_life.getRange(1, 1, 20, 3).getValues();
-  let teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
-  let event = sheet_event.getRange(1, 1, 20, 3).getValues();
+  let life;
+  let teach;
+  let event;
+  let cache = CacheService.getScriptCache();
+  if (cache.get('life_data') == null 
+      && cache.get('tea_data') == null 
+      && cache.get('eve_data') == null) {
+    life = sheet_life.getRange(1, 1, 20, 3).getValues();
+    teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
+    event = sheet_event.getRange(1, 1, 20, 3).getValues();
+  } else {
+    life = JSON.parse(cache.get('life_data'));
+    teach = JSON.parse(cache.get('tea_data'));
+    event = JSON.parse(cache.get('eve_data'));
+  }
   ////取得した二次元配列を全て連結し要素の日付で昇順にソートし上から20件取得
   let all = life.concat(teach, event).sort(sort_asc).slice(0, 20);
   function sort_asc(a,b) {
@@ -336,7 +348,6 @@ function writing_sheet_all() {
     sheet_all.getRange(1, 1, rows, cols).setValues(all);
     CacheService.getScriptCache().put('all_data', JSON.stringify(all), 21600);
   } else {
-    let cache = CacheService.getScriptCache();
     let all_data = cache.get('all_data');
     if (all_data == null ) {
       let range = sheet_all.getRange(1, 1, last_row, 3).getValues();
