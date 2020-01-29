@@ -90,10 +90,15 @@ function writing_sheet_life() {
       var num = info_tit.indexOf(tit_diff[i]);
       diff[i] = info[num];
     }
-    let result = diff.concat(data);
-    sheet_life.getRange(1, 1, result.length, cols).setValues(result);
-    cache.remove('life_data');
-    cache.put('life_data', JSON.stringify(result) ,21600);
+    if (diff.length > 0) {
+      let result = diff.concat(data);
+      sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+      cache.remove('life_data');
+      cache.put('life_data', JSON.stringify(result) ,21600);
+    } else {
+      cache.remove('life_data');
+      cache.put('life_data', JSON.stringify(data) ,21600);
+    }
   }
 }
 ////行データを取得
@@ -175,10 +180,15 @@ function writing_sheet_teach() {
       let num = info_tit.indexOf(tit_diff[i]);
       diff[i] = info[num];
     }
-    let result = diff.concat(data);
-    sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
-    cache.remove('tea_data');
-    cache.put('tea_data', JSON.stringify(result) ,21600);
+    if (diff.length > 0) {
+      let result = diff.concat(data);
+      sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
+      cache.remove('tea_data');
+      cache.put('tea_data', JSON.stringify(result) ,21600);
+    } else {
+      cache.remove('tea_data');
+      cache.put('tea_data', JSON.stringify(data) ,21600);
+    }
   }
 }
 ////行データを取得
@@ -260,10 +270,15 @@ function writing_sheet_event() {
       let num = info_tit.indexOf(tit_diff[i]);
       diff[i] = info[num];
     }
-    let result = diff.concat(data);
-    sheet_event.getRange(1, 1, result.length, cols).setValues(result);
-    cache.remove('eve_data');
-    cache.put('eve_data', JSON.stringify(result) ,21600);
+    if (diff.length > 0) {
+      let result = diff.concat(data);
+      sheet_event.getRange(1, 1, result.length, cols).setValues(result);
+      cache.remove('eve_data');
+      cache.put('eve_data', JSON.stringify(result) ,21600);
+    } else {
+      cache.remove('eve_data');
+      cache.put('eve_data', JSON.stringify(data) ,21600);
+    }
   }
 }
 ////行データを取得
@@ -321,10 +336,15 @@ function writing_sheet_all() {
       let num = all_tit.indexOf(tit_diff[i]);
       diff[i] = all[num];
     }
-    let result = diff.concat(data);
-    sheet_all.getRange(1, 1, result.length, cols).setValues(result);
-    cache.remove('all_data');
-    cache.put('all_data', JSON.stringify(result) ,21600);
+    if (diff.length > 0) {
+      let result = diff.concat(data);
+      sheet_all.getRange(1, 1, result.length, cols).setValues(result);
+      cache.remove('all_data');
+      cache.put('all_data', JSON.stringify(result) ,21600);
+    } else {
+      cache.remove('all_data');
+      cache.put('all_data', JSON.stringify(data) ,21600);
+    }
   }
 }
 ////行データを取得
