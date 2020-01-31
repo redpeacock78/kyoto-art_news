@@ -3,13 +3,13 @@ version: 2
 references:
   container_config: &container_config
     docker:
-      - image: circleci/node:7.10
-    working_directory: /home/circleic/project
+      - image: circleci/node:latest
+    working_directory: /home/circleci/project
 
   node_modules_cache_params: &node_modules_cache_params
-    key: yarn-packages-{{ checksum "yarn.lock" }}
+    key: yarn-packages-{{ .Branch }}-{{ checksum "./yarn.lock" }}
     paths:
-      - ~/.cache/yarn
+      - node_modules
 
 jobs:
   build_deploy:
@@ -17,36 +17,36 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Show system information.
-        command: |
-          echo "Node $(node -v)"
-          echo "Yarn $(yarn -v)"
+          name: Show system information.
+          command: |
+            echo "Node $(node -v)"
+            echo "Yarn $(yarn -v)"
       - restore_cache:
-        name: Restore Cache.
-        <<: *node_modules_cache_params
+          name: Restore Cache.
+          <<: *node_modules_cache_params
       - run:
-        name: Setup to GAS clasp environment.
-        command: yarn install
+          name: Setup to GAS clasp environment.
+          command: yarn install --frozen-lockfile
       - save_cache:
-        name: Saving Cache.
-        <<: *node_modules_cache_params
+          name: Saving Cache.
+          <<: *node_modules_cache_params
       - run:
-        name: Run Lint.
-        command: yarn lint
+          name: Run Lint.
+          command: yarn lint
       - run:
-        name: Run Test.
-        command: yarn test
+          name: Run Test.
+          command: yarn test
       - run:
-        name: Run webpack Build.
-        command: yarn build
+          name: Run webpack Build.
+          command: yarn build
       - run:
-        name: Deploy to GAS.
-        command: |
-          if [[ ${CIRCLE_BRANCH} = 'master' ]]; then
-            ./scripts/deploy_ci.sh
-          else
-            echo "${CIRCLE_BRANCH} isn't deploy branch."
-          fi
+          name: Deploy to GAS.
+          command: |
+            if [[ ${CIRCLE_BRANCH} = 'master' ]]; then
+              ./scripts/deploy_ci.sh
+            else
+              echo "${CIRCLE_BRANCH} isn't deploy branch."
+            fi
 
 workflows:
   version: 2
