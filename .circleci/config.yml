@@ -7,9 +7,9 @@ references:
     working_directory: /home/circleic/project
 
   node_modules_cache_params: &node_modules_cache_params
-    key: v1-dependencies-{{ checksum "package.json" }}
+    key: yarn-packages-{{ checksum "yarn.lock" }}
     paths:
-      - node_modules
+      - ~/.cache/yarn
 
 jobs:
   build_deploy:
