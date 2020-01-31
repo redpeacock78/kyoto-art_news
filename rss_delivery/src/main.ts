@@ -85,12 +85,12 @@ function writing_sheet_life() {
       data_tit[i] = data[i][0];
     }
     let tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    let diff = new Array();
-    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
-      var num = info_tit.indexOf(tit_diff[i]);
-      diff[i] = info[num];
-    }
-    if (diff.length > 0) {
+    if (tit_diff.length > 0) {
+      let diff = new Array();
+      for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+        let num = info_tit.indexOf(tit_diff[i]);
+        diff[i] = info[num];
+      }
       let result = diff.concat(data);
       if (result.length < 200) {
         sheet_life.getRange(1, 1, result.length, cols).setValues(result);
@@ -182,12 +182,12 @@ function writing_sheet_teach() {
       data_tit[i] = data[i][0];
     }
     let tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    let diff = new Array();
-    for (let i = 0;i < diff.length;i=(i+1)|0) {
-      let num = info_tit.indexOf(tit_diff[i]);
-      diff[i] = info[num];
-    }
-    if (diff.length > 0) {
+    if (tit_diff.length > 0) {
+      let diff = new Array();
+      for (let i = 0;i < diff.length;i=(i+1)|0) {
+        let num = info_tit.indexOf(tit_diff[i]);
+        diff[i] = info[num];
+      }
       let result = diff.concat(data);
       if (result.length < 200) {
         sheet_teach.getRange(1, 1, result.length, cols).setValues(result);
@@ -279,12 +279,12 @@ function writing_sheet_event() {
       data_tit[i] = data[i][0];
     }
     let tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    let diff = new Array();
-    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
-      let num = info_tit.indexOf(tit_diff[i]);
-      diff[i] = info[num];
-    }
-    if (diff.length > 0) {
+    if (tit_diff.length > 0) {
+      let diff = new Array();
+      for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+        let num = info_tit.indexOf(tit_diff[i]);
+        diff[i] = info[num];
+      }
       let result = diff.concat(data);
       if (result.length < 200) {
         sheet_event.getRange(1, 1, result.length, cols).setValues(result);
@@ -363,12 +363,12 @@ function writing_sheet_all() {
       data_tit[i] = data[i][0];
     }
     let tit_diff = all_tit.filter(i => data_tit.indexOf(i) == -1);
-    let diff = new Array();
-    for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
-      let num = all_tit.indexOf(tit_diff[i]);
-      diff[i] = all[num];
-    }
-    if (diff.length > 0) {
+    if (tit_diff.length > 0) {
+      let diff = new Array();
+      for (let i = 0;i < tit_diff.length;i=(i+1)|0) {
+        let num = all_tit.indexOf(tit_diff[i]);
+        diff[i] = all[num];
+      }
       let result = diff.concat(data);
       if (result.length < 200) {
         sheet_all.getRange(1, 1, result.length, cols).setValues(result);
