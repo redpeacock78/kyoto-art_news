@@ -1,9 +1,9 @@
 ## kyoto-art_news
-![GitHub](https://img.shields.io/github/license/redpeacock78/kyoto-art_news)
+[![GitHub](https://img.shields.io/github/license/redpeacock78/kyoto-art_news)](https://github.com/redpeacock78/kyoto-art_news/blob/master/LICENSE)
 ![GitHub language count](https://img.shields.io/github/languages/count/redpeacock78/kyoto-art_news)
 ![GitHub top language](https://img.shields.io/github/languages/top/redpeacock78/kyoto-art_news)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/redpeacock78/kyoto-art_news)  
-![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)
+[![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circlci.com/gh/redpeacock78/kyoto-art_news/tree/master)
 
 ### 概要
 これは[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)に配信されている「お知らせ情報」をRSSとして配信するためのものです。  
