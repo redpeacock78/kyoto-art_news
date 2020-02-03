@@ -225,7 +225,7 @@ function writing_sheet_teach() {
     const tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
     if (tit_diff.length > 0) {
       const diff = [];
-      for (let i = 0; i < diff.length; i = (i + 1) | 0) {
+      for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
         const num = info_tit.indexOf(tit_diff[i]);
         diff[i] = info[num];
       }
