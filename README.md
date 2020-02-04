@@ -40,3 +40,11 @@
 
 ## License
 This source code is licensed MIT.
+
+## Development Environment
+### Clone & Install
+```bash
+$ git clone git@github.com:redpeacock78/kyoto-art_news.git
+$ cd kyoto-art_news
+$ yarn add -D typescript eslint eslint-plugin-prettier eslint-config-prettier prettier jest cpx rimraf webpack webpack-cli gas-webpack-plugin ts-jest ts-loader @types/google-apps-script @typescript-eslint/eslint-plugin @typescript-eslint/parser @types/jest
+```
