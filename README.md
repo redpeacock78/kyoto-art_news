@@ -6,8 +6,9 @@
 [![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circleci.com/gh/redpeacock78/kyoto-art_news)
 
 ### 概要
-これは[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)に配信されている「お知らせ情報」をRSSとして配信するためのものです。  
-~~公式で配信してくれればこのRSSを制作することは無いんですけどね。応用すればDiscordとかSlackに流せますし。一応専用メールは流してるけど正直見てる人口は少ないと思うのでこう言う汎用性の高いものを公式で用意して欲しいですね。ちなみに「在学生専用LINEbot」なんてのもあったら便利ですよね。(提案)~~
+これは[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)に配信されている「お知らせ情報」をRSSとして配信するためのものです。(非公式)  
+~~公式で配信してくれればこのRSSを制作することは無いんですけどね。応用すればDiscordとかSlackに流せますし。一応専用メールは流してるけど正直見てる人口は少ないと思うのでこう言う汎用性の高いものを公式で用意して欲しいですね。ちなみに「在学生専用LINEbot」なんてのもあったら便利ですよね。(提案)~~  
+なお更新される最新の情報はスクレイピングの関係上サーバーに負荷を掛けないために最大5〜6分の遅延が発生する可能性があります。
 
 ### 使用方法
 以下のURLをRSSリーダーなどに登録することによってそれぞれに対応した情報を適宜更新・取得することが可能になります。  
@@ -42,6 +43,7 @@
 This source code is licensed MIT.
 
 ## Development Environment
+claspのセットアップとCircleCIのセットアップを終えてから以下の手順で環境の構築とBuild & Deployを行ってください。
 ### Clone & Install
 ```bash
 $ git clone git@github.com:redpeacock78/kyoto-art_news.git
