@@ -4,6 +4,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/redpeacock78/kyoto-art_news)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/redpeacock78/kyoto-art_news)  
 [![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circleci.com/gh/redpeacock78/kyoto-art_news)
+[![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
 
 ### 概要
 これは[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)に配信されている「お知らせ情報」をRSSとして配信するためのものです。(非公式)  
