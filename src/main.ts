@@ -46,8 +46,13 @@ function get_life_url(): string[] {
 ////get_lifeから記事のタイトルを取得し配列に格納
 function get_life_title(): string[] {
   const news = get_life();
-  const title: string[] = String(news.match(/<p class="tit">.*/g))
-    .replace(html_tag, "")
+  const title: string[] = XmlService.parse(
+    "<d>" +
+      String(news.match(/<p class="tit">.*/g)).replace(html_tag, "") +
+      "</d>"
+  )
+    .getRootElement()
+    .getText()
     .split(",");
   return title;
 }
@@ -165,8 +170,13 @@ function get_teach_url(): string[] {
 ////get_teachから記事のタイトルを取得し配列に格納
 function get_teach_title(): string[] {
   const news = get_teach();
-  const title: string[] = String(news.match(/<p class="tit">.*/g))
-    .replace(html_tag, "")
+  const title: string[] = XmlService.parse(
+    "<d>" +
+      String(news.match(/<p class="tit">.*/g)).replace(html_tag, "") +
+      "</d>"
+  )
+    .getRootElement()
+    .getText()
     .split(",");
   return title;
 }
@@ -284,8 +294,13 @@ function get_event_url(): string[] {
 ////get_eventから記事のタイトルを取得し配列に格納
 function get_event_title(): string[] {
   const news = get_event();
-  const title: string[] = String(news.match(/<p class="tit">.*/g))
-    .replace(html_tag, "")
+  const title: string[] = XmlService.parse(
+    "<d>" +
+      String(news.match(/<p class="tit">.*/g)).replace(html_tag, "") +
+      "</d>"
+  )
+    .getRootElement()
+    .getText()
     .split(",");
   return title;
 }
