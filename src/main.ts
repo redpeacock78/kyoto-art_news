@@ -430,7 +430,7 @@ function writing_sheet_all() {
     const all_url = [];
     const data_url = [];
     for (let i = 0; i < all.length; i = (i + 1) | 0) {
-      all_url[i] = all[i][0];
+      all_url[i] = all[i][1];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
       data_url[i] = data[i][1];
