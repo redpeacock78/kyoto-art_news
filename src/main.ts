@@ -95,19 +95,19 @@ function writing_sheet_life() {
       cache.put("life_data", JSON.stringify(range), 21600);
     }
     const data = JSON.parse(cache.get("life_data"));
-    const info_tit = [];
-    const data_tit = [];
+    const info_url = [];
+    const data_url = [];
     for (let i = 0; i < info.length; i = (i + 1) | 0) {
-      info_tit[i] = info[i][0];
+      info_url[i] = info[i][1];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
-      data_tit[i] = data[i][0];
+      data_url[i] = data[i][1];
     }
-    const tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    if (tit_diff.length > 0) {
+    const url_diff = info_url.filter(i => data_url.indexOf(i) == -1);
+    if (url_diff.length > 0) {
       const diff = [];
-      for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
-        const num = info_tit.indexOf(tit_diff[i]);
+      for (let i = 0; i < url_diff.length; i = (i + 1) | 0) {
+        const num = info_url.indexOf(url_diff[i]);
         diff[i] = info[num];
       }
       const result = diff.concat(data);
@@ -214,19 +214,19 @@ function writing_sheet_teach() {
       cache.put("tea_data", JSON.stringify(range), 21600);
     }
     const data = JSON.parse(cache.get("tea_data"));
-    const info_tit = [];
-    const data_tit = [];
+    const info_url = [];
+    const data_url = [];
     for (let i = 0; i < info.length; i = (i + 1) | 0) {
-      info_tit[i] = info[i][0];
+      info_url[i] = info[i][1];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
-      data_tit[i] = data[i][0];
+      data_url[i] = data[i][1];
     }
-    const tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    if (tit_diff.length > 0) {
+    const url_diff = info_url.filter(i => data_url.indexOf(i) == -1);
+    if (url_diff.length > 0) {
       const diff = [];
-      for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
-        const num = info_tit.indexOf(tit_diff[i]);
+      for (let i = 0; i < url_diff.length; i = (i + 1) | 0) {
+        const num = info_url.indexOf(url_diff[i]);
         diff[i] = info[num];
       }
       const result = diff.concat(data);
@@ -333,19 +333,19 @@ function writing_sheet_event() {
       cache.put("eve_data", JSON.stringify(range), 21600);
     }
     const data = JSON.parse(cache.get("eve_data"));
-    const info_tit = [];
-    const data_tit = [];
+    const info_url = [];
+    const data_url = [];
     for (let i = 0; i < info.length; i = (i + 1) | 0) {
-      info_tit[i] = info[i][0];
+      info_url[i] = info[i][1];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
-      data_tit[i] = data[i][0];
+      data_url[i] = data[i][1];
     }
-    const tit_diff = info_tit.filter(i => data_tit.indexOf(i) == -1);
-    if (tit_diff.length > 0) {
+    const url_diff = info_url.filter(i => data_url.indexOf(i) == -1);
+    if (url_diff.length > 0) {
       const diff = [];
-      for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
-        const num = info_tit.indexOf(tit_diff[i]);
+      for (let i = 0; i < url_diff.length; i = (i + 1) | 0) {
+        const num = info_url.indexOf(url_diff[i]);
         diff[i] = info[num];
       }
       const result = diff.concat(data);
@@ -427,19 +427,19 @@ function writing_sheet_all() {
       cache.put("all_data", JSON.stringify(range), 21600);
     }
     const data = JSON.parse(cache.get("all_data"));
-    const all_tit = [];
-    const data_tit = [];
+    const all_url = [];
+    const data_url = [];
     for (let i = 0; i < all.length; i = (i + 1) | 0) {
-      all_tit[i] = all[i][0];
+      all_url[i] = all[i][0];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
-      data_tit[i] = data[i][0];
+      data_url[i] = data[i][1];
     }
-    const tit_diff = all_tit.filter(i => data_tit.indexOf(i) == -1);
-    if (tit_diff.length > 0) {
+    const url_diff = all_url.filter(i => data_url.indexOf(i) == -1);
+    if (url_diff.length > 0) {
       const diff = [];
-      for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
-        const num = all_tit.indexOf(tit_diff[i]);
+      for (let i = 0; i < url_diff.length; i = (i + 1) | 0) {
+        const num = all_url.indexOf(url_diff[i]);
         diff[i] = all[num];
       }
       const result = diff.concat(data);
