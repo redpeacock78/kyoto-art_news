@@ -1,0 +1,23 @@
+<rss version="2.0">
+    <channel>
+    
+    <title>緊急情報に関するお知らせ | 京都造形芸術大学 在学生専用サイト</title>
+    <description></description>
+    <link>https://www.kyoto-art.ac.jp/student/</link>
+    <language>ja</language>
+    
+      <?
+      for(var i=0;i<20;i++){
+      ?>
+      <item>
+      <title><?= get_emergency_data(i)[0] ?></title>
+      <link><?= get_emergency_data(i)[1] ?></link>
+      <description><![CDATA[<img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg" referrerpolicy="no-referrer">]]></description>
+      <pubDate><?= get_emergency_data(i)[2] ?></pubDate>
+      <webMaster>京都造形芸術大学</webMaster>
+      </item>
+      <? } ?>
+    
+    </channel>
+        
+    </rss>
