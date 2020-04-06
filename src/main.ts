@@ -436,7 +436,7 @@ function get_emergency_date() {
   const conv_date = [];
   for (let i = 0; i < date.length; i = (i + 1) | 0) {
     const del = "/";
-    const arr = date[i].split(del);
+    const arr: any = date[i].split(del);
     const conv = new Date(arr[0], arr[1] - 1, arr[2]);
     const time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss");
     conv_date[i] = Utilities.formatDate(
