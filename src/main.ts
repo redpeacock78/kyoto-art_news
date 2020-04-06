@@ -393,117 +393,126 @@ function get_event_data(row_num) {
 //緊急情報について
 ////URLから指定範囲をスクレイピング
 function get_emergency() {
-  var responce = UrlFetchApp.fetch(url_emergency)
-      .getContentText()
-      .split(/\r\n|\r|\n/);
-  var start_num = responce.indexOf('    <div class="emergency-sect">');
-  var last_num = responce.indexOf('    <div class="contents-in">');
-  var news_block = String(responce.slice(start_num, last_num))
-      .replace(/,/g, "\n")
-      .replace(/ +/g, " ")
-      .trim();
+  const responce = UrlFetchApp.fetch(url_emergency)
+    .getContentText()
+    .split(/\r\n|\r|\n/);
+  const start_num = responce.indexOf('    <div class="emergency-sect">');
+  const last_num = responce.indexOf('    <div class="contents-in">');
+  const news_block = String(responce.slice(start_num, last_num))
+    .replace(/,/g, "\n")
+    .replace(/ +/g, " ")
+    .trim();
   return news_block;
 }
 ////get_emergencyから記事のURLを取得し配列に格納
 function get_emergency_url() {
-  var news = get_emergency();
-  var news_url = String(news.match(/<a href=".*">/g))
-      .replace(/<a href="/g, "")
-      .replace(/">/g, "")
-      .split(",");
+  const news = get_emergency();
+  const news_url = String(news.match(/<a href=".*">/g))
+    .replace(/<a href="/g, "")
+    .replace(/">/g, "")
+    .split(",");
   return news_url;
 }
 ////get_emergencyから記事のタイトルを取得し配列に格納
 function get_emergency_title() {
-  var news = get_emergency();
-  var title = XmlService.parse("<d>" +
+  const news = get_emergency();
+  const title = XmlService.parse(
+    "<d>" +
       String(news.match(/<p class="tit">.*/g)).replace(html_tag, "") +
-      "</d>")
-      .getRootElement()
-      .getText()
-      .split(",");
+      "</d>"
+  )
+    .getRootElement()
+    .getText()
+    .split(",");
   return title;
 }
 ////get_emergencyから記事の日付をを取得し変換したのち配列に格納
 function get_emergency_date() {
-  var news = get_emergency();
-  var date = String(news.match(/<p class="date font-roboto">.*/g))
-      .replace(html_tag, "")
-      .replace(/\./g, "/")
-      .split(",");
-  var conv_date = [];
-  for (var i = 0; i < date.length; i = (i + 1) | 0) {
-      var del = "/";
-      var arr = date[i].split(del);
-      var conv = new Date(arr[0], arr[1] - 1, arr[2]);
-      var time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss");
-      conv_date[i] = Utilities.formatDate(conv, "JST", "E MMM dd yyyy " + time + " Z");
+  const news = get_emergency();
+  const date = String(news.match(/<p class="date font-roboto">.*/g))
+    .replace(html_tag, "")
+    .replace(/\./g, "/")
+    .split(",");
+  const conv_date = [];
+  for (let i = 0; i < date.length; i = (i + 1) | 0) {
+    const del = "/";
+    const arr = date[i].split(del);
+    const conv = new Date(arr[0], arr[1] - 1, arr[2]);
+    const time = Utilities.formatDate(new Date(), "JST", "HH:mm:ss");
+    conv_date[i] = Utilities.formatDate(
+      conv,
+      "JST",
+      "E MMM dd yyyy " + time + " Z"
+    );
   }
   return conv_date;
 }
 ////sheetに書き込み
 function writing_sheet_emergency() {
-  var url = get_emergency_url();
-  var date = get_emergency_date();
-  var title = get_emergency_title();
-  var info = [];
-  for (var i = 0; i < url.length; i = (i + 1) | 0) {
-      info[i] = [title[i], url[i], date[i]];
+  const url = get_emergency_url();
+  const date = get_emergency_date();
+  const title = get_emergency_title();
+  const info = [];
+  for (let i = 0; i < url.length; i = (i + 1) | 0) {
+    info[i] = [title[i], url[i], date[i]];
   }
-  var rows = info.length;
-  var cols = info[0].length;
-  var last_row = sheet_emergency.getLastRow();
+  const rows = info.length;
+  const cols = info[0].length;
+  const last_row = sheet_emergency.getLastRow();
   if (last_row === 0) {
-      sheet_life.getRange(1, 1, rows, cols).setValues(info);
-      CacheService.getScriptCache().put("emergency_data", JSON.stringify(info), 21600);
-  }
-  else {
-      var cache = CacheService.getScriptCache();
-      var life_data = cache.get("emergency_data");
-      if (life_data == null) {
-          var range = sheet_life.getRange(1, 1, last_row, 3).getValues();
-          cache.put("emergency_data", JSON.stringify(range), 21600);
+    sheet_life.getRange(1, 1, rows, cols).setValues(info);
+    CacheService.getScriptCache().put(
+      "emergency_data",
+      JSON.stringify(info),
+      21600
+    );
+  } else {
+    const cache = CacheService.getScriptCache();
+    const life_data = cache.get("emergency_data");
+    if (life_data == null) {
+      const range = sheet_life.getRange(1, 1, last_row, 3).getValues();
+      cache.put("emergency_data", JSON.stringify(range), 21600);
+    }
+    const data = JSON.parse(cache.get("emergency_data"));
+    const info_url = [];
+    const data_url = [];
+    for (let i = 0; i < info.length; i = (i + 1) | 0) {
+      info_url[i] = info[i][1];
+    }
+    for (let i = 0; i < data.length; i = (i + 1) | 0) {
+      data_url[i] = data[i][1];
+    }
+    const url_diff = info_url.filter(function(i) {
+      return data_url.indexOf(i) == -1;
+    });
+    if (url_diff.length > 0) {
+      const diff = [];
+      for (let i = 0; i < url_diff.length; i = (i + 1) | 0) {
+        const num = info_url.indexOf(url_diff[i]);
+        diff[i] = info[num];
       }
-      var data = JSON.parse(cache.get("emergency_data"));
-      var info_url = [];
-      var data_url = [];
-      for (var i = 0; i < info.length; i = (i + 1) | 0) {
-          info_url[i] = info[i][1];
+      const result = diff.concat(data);
+      if (result.length < 200) {
+        sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+        cache.remove("emergency_data");
+        cache.put("emergency_data", JSON.stringify(result), 21600);
+      } else {
+        const max_result = result.slice(0, 200);
+        sheet_life
+          .getRange(1, 1, max_result.length, cols)
+          .setValues(max_result);
+        cache.remove("emergency_data");
+        cache.put("emergency_data", JSON.stringify(max_result), 21600);
       }
-      for (var i = 0; i < data.length; i = (i + 1) | 0) {
-          data_url[i] = data[i][1];
-      }
-      var url_diff = info_url.filter(function (i) { return data_url.indexOf(i) == -1; });
-      if (url_diff.length > 0) {
-          var diff = [];
-          for (var i = 0; i < url_diff.length; i = (i + 1) | 0) {
-              var num = info_url.indexOf(url_diff[i]);
-              diff[i] = info[num];
-          }
-          var result = diff.concat(data);
-          if (result.length < 200) {
-              sheet_life.getRange(1, 1, result.length, cols).setValues(result);
-              cache.remove("emergency_data");
-              cache.put("emergency_data", JSON.stringify(result), 21600);
-          }
-          else {
-              var max_result = result.slice(0, 200);
-              sheet_life
-                  .getRange(1, 1, max_result.length, cols)
-                  .setValues(max_result);
-              cache.remove("emergency_data");
-              cache.put("emergency_data", JSON.stringify(max_result), 21600);
-          }
-      }
-      else {
-          cache.remove("emergency_data");
-          cache.put("emergency_data", JSON.stringify(data), 21600);
-      }
+    } else {
+      cache.remove("emergency_data");
+      cache.put("emergency_data", JSON.stringify(data), 21600);
+    }
   }
 }
 ////行データを取得
 function get_emergency_data(row_num) {
-  var range = sheet_emergency.getRange(1, 1, 20, 3);
+  const range = sheet_emergency.getRange(1, 1, 20, 3);
   return range.getValues()[row_num];
 }
 
