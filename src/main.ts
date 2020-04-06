@@ -460,7 +460,7 @@ function writing_sheet_emergency() {
   const cols = info[0].length;
   const last_row = sheet_emergency.getLastRow();
   if (last_row === 0) {
-    sheet_life.getRange(1, 1, rows, cols).setValues(info);
+    sheet_emergency.getRange(1, 1, rows, cols).setValues(info);
     CacheService.getScriptCache().put(
       "emergency_data",
       JSON.stringify(info),
@@ -468,9 +468,9 @@ function writing_sheet_emergency() {
     );
   } else {
     const cache = CacheService.getScriptCache();
-    const life_data = cache.get("emergency_data");
-    if (life_data == null) {
-      const range = sheet_life.getRange(1, 1, last_row, 3).getValues();
+    const emergency_data = cache.get("emergency_data");
+    if (emergency_data == null) {
+      const range = sheet_emergency.getRange(1, 1, last_row, 3).getValues();
       cache.put("emergency_data", JSON.stringify(range), 21600);
     }
     const data = JSON.parse(cache.get("emergency_data"));
@@ -493,12 +493,12 @@ function writing_sheet_emergency() {
       }
       const result = diff.concat(data);
       if (result.length < 200) {
-        sheet_life.getRange(1, 1, result.length, cols).setValues(result);
+        sheet_emergency.getRange(1, 1, result.length, cols).setValues(result);
         cache.remove("emergency_data");
         cache.put("emergency_data", JSON.stringify(result), 21600);
       } else {
         const max_result = result.slice(0, 200);
-        sheet_life
+        sheet_emergency
           .getRange(1, 1, max_result.length, cols)
           .setValues(max_result);
         cache.remove("emergency_data");
