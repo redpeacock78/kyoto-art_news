@@ -43,6 +43,10 @@
   <a href="https://kyotoartnews.page.link/emergency"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/rss.png" alt="RSSを購読する" width="20" height="20"></a>
   <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fkyotoartnews.page.link%2Femergency'  target='blank'><img id='feedlyFollow' src='https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/feedly-follow-rectangle-volume-small_2x.png' alt='follow us in feedly' width='66' height='20'></a>
   <a href="http://www.inoreader.com/feed/https://kyotoartnews.page.link/emergency" target="blank"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/inoreader-follow.png" alt='follow us in inoreader' width='57' height='20'></a>
+#### 使用例
+|<img src="https://i.imgur.com/A0Qp32h.png" alt="Actual use cases" title="Inoreader">|
+|:-:|
+|Inoreaderでの表示例|
 
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
@@ -50,18 +54,3 @@
 
 ## License
 This source code is licensed MIT.
-
-## Development Environment
-claspのセットアップとCircleCIのセットアップを終えてから以下の手順で環境の構築とBuild & Deployを行ってください。
-### Clone & Install
-```bash
-$ git clone git@github.com:redpeacock78/kyoto-art_news.git
-$ cd kyoto-art_news
-$ yarn upgrade
-$ yarn add -D typescript eslint eslint-plugin-prettier eslint-config-prettier prettier jest cpx rimraf webpack webpack-cli gas-webpack-plugin ts-jest ts-loader @types/google-apps-script @typescript-eslint/eslint-plugin @typescript-eslint/parser @types/jest
-```
-
-### Lint & Build & Deploy
-```bash
-$ yarn lint-fix && git push origin master
-```
