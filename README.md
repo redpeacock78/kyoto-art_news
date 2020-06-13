@@ -43,8 +43,8 @@
   <a href="https://kyotoartnews.page.link/emergency"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/rss.png" alt="RSSを購読する" width="20" height="20"></a>
   <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fkyotoartnews.page.link%2Femergency'  target='blank'><img id='feedlyFollow' src='https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/feedly-follow-rectangle-volume-small_2x.png' alt='follow us in feedly' width='66' height='20'></a>
   <a href="http://www.inoreader.com/feed/https://kyotoartnews.page.link/emergency" target="blank"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/inoreader-follow.png" alt='follow us in inoreader' width='57' height='20'></a>
-- 奨学金
-  https://kyotoartnews.page.link/scholarship
+- 奨学金  
+  https://kyotoartnews.page.link/scholarship  
   <a href="https://kyotoartnews.page.link/scholarship"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/rss.png" alt="RSSを購読する" width="20" height="20"></a>
   <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fkyotoartnews.page.link%2Fscholarship'  target='blank'><img id='feedlyFollow' src='https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/feedly-follow-rectangle-volume-small_2x.png' alt='follow us in feedly' width='66' height='20'></a>
   <a href="http://www.inoreader.com/feed/https://kyotoartnews.page.link/scholarship" target="blank"><img src="https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/inoreader-follow.png" alt='follow us in inoreader' width='57' height='20'></a>
