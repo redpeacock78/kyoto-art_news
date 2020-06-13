@@ -570,9 +570,7 @@ function get_scholarship(): string {
   const start_num: number = responce.indexOf(
     '          <section class="news-sect">'
   );
-  const last_num: number = responce.indexOf(
-    '<span class="page-numbers dots">&hellip;</span>'
-  );
+  const last_num: number = responce.indexOf("          </section>");
   const news_block: string = String(responce.slice(start_num, last_num))
     .replace(/,/g, "\n")
     .replace(/ +/g, " ")
