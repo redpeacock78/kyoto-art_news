@@ -5,6 +5,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/redpeacock78/kyoto-art_news)  
 [![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circleci.com/gh/redpeacock78/kyoto-art_news)
 [![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
+[![Gitlab CI](https://gitlab.com/redpeacock78/kyoto-art-news-rss/badges/master/pipeline.svg)](https://gitlab.com/redpeacock78/kyoto-art-news-rss/-/commits/master)
 
 ### 概要
 これは[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)に配信されている「お知らせ情報」をRSSとして配信するためのものです。(非公式)  
@@ -62,6 +63,8 @@
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
 - [Firebase Dynamic Links](https://firebase.google.com/docs/dynamic-links?hl=ja)
+- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
+- [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/)
 
 ## License
 This source code is licensed MIT.
