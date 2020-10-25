@@ -1,4 +1,5 @@
 #! /bin/bash
 
 echo ${CLASP_JSON} > ~/.clasprc.json
-npx @google/clasp push
+yarn global add @google/clasp
+clasp push
