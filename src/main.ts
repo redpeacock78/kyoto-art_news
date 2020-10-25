@@ -730,9 +730,7 @@ function get_careerdesign_title(): string[] {
   const title: string[] = XmlService.parse(
     "<d>" +
       String(
-        news.match(
-          /<p class="cat -.*">.*<\/p> *<p class="tit">.*/g
-        )
+        news.match(/<p class="cat -.*">.*<\/p> *<p class="tit">.*/g)
       ).replace(html_tag, "") +
       "</d>"
   )
