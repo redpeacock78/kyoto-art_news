@@ -1,4 +1,4 @@
 #! /bin/bash
 
 echo ${CLASP_JSON} > ~/.clasprc.json
-npx -y @google/clasp push
+npm_config_yes=true npx @google/clasp push
