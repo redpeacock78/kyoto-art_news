@@ -731,14 +731,17 @@ function get_careerdesign_title(): string[] {
     "<d>" +
       String(
         news.match(
-          /<p class="cat -company-briefing">.*<\/p> *<p class="tit">.*/g
+          /<p class="cat -.*">.*<\/p> *<p class="tit">.*/g
         )
       ).replace(html_tag, "") +
       "</d>"
   )
     .getRootElement()
     .getText()
-    .split(",");
+    .split(",")
+    .map(genre => {
+      return genre.replace(/ /, ":");
+    });
   return title;
 }
 ////get_careerdesignから記事の日付をを取得し変換したのち配列に格納
@@ -829,7 +832,7 @@ function writing_sheet_careerdesign(): void {
 }
 ////行データを取得
 function get_careerdesign_data(row_num: number): string[][] {
-  const range: GoogleAppsScript.Spreadsheet.Range = sheet_scholarship.getRange(
+  const range: GoogleAppsScript.Spreadsheet.Range = sheet_careerdesign.getRange(
     1,
     1,
     20,
