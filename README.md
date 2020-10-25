@@ -3,7 +3,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/redpeacock78/kyoto-art_news)
 ![GitHub top language](https://img.shields.io/github/languages/top/redpeacock78/kyoto-art_news)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/redpeacock78/kyoto-art_news)  
-[![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circleci.com/gh/redpeacock78/kyoto-art_news)
+[![CircleCI](https://circleci.com/gh/redpeacock78/kyoto-art_news.svg?style=shield)](https://circleci.com/gh/redpeacock78/kyoto-art_news)
 [![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
 [![Gitlab CI](https://gitlab.com/redpeacock78/kyoto-art-news-rss/badges/master/pipeline.svg)](https://gitlab.com/redpeacock78/kyoto-art-news-rss/-/commits/master)
 
