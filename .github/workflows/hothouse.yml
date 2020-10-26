@@ -25,5 +25,5 @@ jobs:
       - name: run
         run: |
           git config --local user.name "hothouse"
-          git config --local "hothouse@example.com"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           hothouse -t ${{ secrets.HOTHOUSE_TOKEN }}
