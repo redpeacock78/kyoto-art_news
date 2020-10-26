@@ -26,5 +26,4 @@ jobs:
           npm i -g hothouse
       - name: run
         run: |
-          git config user.name
-          git config user.email
+          hothouse -t ${{ secrets.HOTHOUSE_TOKEN }}
