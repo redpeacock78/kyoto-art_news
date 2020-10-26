@@ -10,6 +10,7 @@ on:
 jobs:
   run-hothouse:
     runs-on: ubuntu-latest
+    name: Run it on action
     steps:
       - name: Checkout master
       - uses: actions/checkout@master
