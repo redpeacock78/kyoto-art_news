@@ -21,9 +21,10 @@ jobs:
         run: |
           npm install -g npm
           npm -v
-          git config user.name hothouse
-          git config user.email hothouse@example.com
+          git config --global user.name hothouse
+          git config --global user.email hothouse@example.com
           npm i -g hothouse
       - name: run
         run: |
-          hothouse -t ${{ secrets.HOTHOUSE_TOKEN }}
+          git config user.name
+          git config user.email
