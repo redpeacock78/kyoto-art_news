@@ -1,0 +1,30 @@
+name: Create Security Fix Pull Request
+
+on:
+  push:
+    branches:
+      - master
+  shedule:
+    - cron: '00 03 * * *'
+
+jobs:
+  run-hothouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+      - uses: actions/checkout@master
+      - name: Setup Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          check-latest: true
+      - name: Setiing
+        run: |
+          npm install -g npm
+          npm -v
+          git config user.name hothouse
+          git config user.email hothouse@example.com
+          npm i -g hothouse
+      - name: run
+        run: |
+          hothouse -t ${{ secrets.HOTHOUSE_TOKEN }}
