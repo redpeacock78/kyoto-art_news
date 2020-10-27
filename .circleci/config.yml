@@ -32,7 +32,7 @@ jobs:
           <<: *node_modules_cache_params
       - run:
           name: Run Lint.
-          command: yarn lint
+          command: yarn lint-fix
       - run:
           name: Run Test.
           command: yarn test
