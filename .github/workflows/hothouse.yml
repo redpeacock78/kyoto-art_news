@@ -1,4 +1,4 @@
-name: Create Security Fix Pull Request
+name: check npm
 
 on:
   push:
