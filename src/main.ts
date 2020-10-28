@@ -910,10 +910,10 @@ function writing_sheet_all(): void {
     const all_url: string[] = [];
     const data_url: string[] = [];
     for (let i = 0; i < all.length; i = (i + 1) | 0) {
-      all_url[i] = all[i][1];
+      all_url[i] = all[i][0];
     }
     for (let i = 0; i < data.length; i = (i + 1) | 0) {
-      data_url[i] = data[i][1];
+      data_url[i] = data[i][0];
     }
     const url_diff: string[] = all_url.filter(i => data_url.indexOf(i) == -1);
     if (url_diff.length > 0) {
