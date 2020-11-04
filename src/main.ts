@@ -741,7 +741,7 @@ function get_careerdesign_title(): string[] {
     .getText()
     .split(",")
     .map((genre: string): string => {
-      if (genre.match(/^(求人|インターン|セミナー・講座情報|企業説明会) /)) {
+      if (/^(求人|インターン|セミナー・講座情報|企業説明会) /.test(genre)) {
         return genre.replace(/ /, ":");
       } else {
         return genre;
