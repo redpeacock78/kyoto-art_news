@@ -3,6 +3,8 @@ Copyright (c) 2020 redpeacock78
 This software is released under the MIT License, see LICENSE.
 */
 
+import { strict } from "assert";
+
 //URLとHTMLタグ、SpreadSheetを指定
 const url_life = "https://www.kyoto-art.ac.jp/student/life/news/?paged=1";
 const url_teach = "https://www.kyoto-art.ac.jp/student/teaching/news/?paged=1";
@@ -729,6 +731,7 @@ function get_careerdesign_title(): string[] {
   const news: string = get_careerdesign();
   const title: string[] = XmlService.parse(
     "<d>" +
+      String(news.match(/^ *<a href="tit">.*/g)).replace(html_tag, "") +
       String(
         news.match(/<p class="cat -.*">.*<\/p> *<p class="tit">.*/g)
       ).replace(html_tag, "") +
@@ -737,8 +740,12 @@ function get_careerdesign_title(): string[] {
     .getRootElement()
     .getText()
     .split(",")
-    .map(genre => {
-      return genre.replace(/ /, ":");
+    .map((genre: string): string => {
+      if (genre.match(/^(求人|インターン|セミナー・講座情報|企業説明会) /)) {
+        return genre.replace(/ /, ":");
+      } else {
+        return genre;
+      }
     });
   return title;
 }
