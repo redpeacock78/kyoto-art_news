@@ -731,7 +731,6 @@ function get_careerdesign_title(): string[] {
   const news: string = get_careerdesign();
   const title: string[] = XmlService.parse(
     "<d>" +
-      String(news.match(/^ *<a href="tit">.*/g)).replace(html_tag, "") +
       String(
         news.match(/<p class="cat -.*">.*<\/p> *<p class="tit">.*/g)
       ).replace(html_tag, "") +
@@ -741,11 +740,7 @@ function get_careerdesign_title(): string[] {
     .getText()
     .split(",")
     .map((genre: string): string => {
-      if (/^(求人|インターン|セミナー・講座情報|企業説明会) /.test(genre)) {
-        return genre.replace(/ /, ":");
-      } else {
-        return genre;
-      }
+      return genre;
     });
   return title;
 }
