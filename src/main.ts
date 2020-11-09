@@ -740,7 +740,7 @@ function get_careerdesign_title(): string[] {
     .getText()
     .split(",")
     .map((genre: string): string => {
-      return genre;
+      return genre.replace(/ /, ":");
     });
   return title;
 }
