@@ -844,35 +844,19 @@ function get_careerdesign_data(row_num: number): string[][] {
 //全ての情報について
 function writing_sheet_all(): void {
   ////それぞれから情報を二次元配列で取得
-  let life: string[][];
-  let teach: string[][];
-  let event: string[][];
-  let emergency: string[][];
-  let scholarship: string[][];
-  let careerdesign: string[][];
+  const life: string[][] = sheet_life.getRange(1, 1, 20, 3).getValues();
+  const teach: string[][] = sheet_teach.getRange(1, 1, 20, 3).getValues();
+  const event: string[][] = sheet_event.getRange(1, 1, 20, 3).getValues();
+  const emergency: string[][] = sheet_emergency
+    .getRange(1, 1, 20, 3)
+    .getValues();
+  const scholarship: string[][] = sheet_scholarship
+    .getRange(1, 1, 20, 3)
+    .getValues();
+  const careerdesign: string[][] = sheet_careerdesign
+    .getRange(1, 1, 20, 3)
+    .getValues();
   const cache: GoogleAppsScript.Cache.Cache = CacheService.getScriptCache();
-  if (
-    cache.get("life_data") == null &&
-    cache.get("tea_data") == null &&
-    cache.get("eve_data") == null &&
-    cache.get("emergency_data") == null &&
-    cache.get("scholarship_data") == null &&
-    cache.get("careerdesign_data") == null
-  ) {
-    life = sheet_life.getRange(1, 1, 20, 3).getValues();
-    teach = sheet_teach.getRange(1, 1, 20, 3).getValues();
-    event = sheet_event.getRange(1, 1, 20, 3).getValues();
-    emergency = sheet_emergency.getRange(1, 1, 20, 3).getValues();
-    scholarship = sheet_scholarship.getRange(1, 1, 20, 3).getValues();
-    careerdesign = sheet_careerdesign.getRange(1, 1, 20, 3).getValues();
-  } else {
-    life = JSON.parse(cache.get("life_data"));
-    teach = JSON.parse(cache.get("tea_data"));
-    event = JSON.parse(cache.get("eve_data"));
-    emergency = JSON.parse(cache.get("emergency_data"));
-    scholarship = JSON.parse(cache.get("scholarship_data"));
-    careerdesign = JSON.parse(cache.get("careerdesign_data"));
-  }
   ////取得した二次元配列を全て連結し要素の日付で昇順にソートし上から20件取得
   const all: string[][] = life
     .concat(teach, event, emergency, scholarship, careerdesign)
